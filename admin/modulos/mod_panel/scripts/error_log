@@ -1,0 +1,2 @@
+[27-Apr-2019 19:41:33 America/LIma] PHP Notice:  Use of undefined constant MAX_SIZE_IMAGE_UPLOAD_SIS - assumed 'MAX_SIZE_IMAGE_UPLOAD_SIS' in /home/computek/public_html/admin/modulos/mod_panel/scripts/producto.script.php on line 126
+[27-Apr-2019 19:41:33 America/LIma] PHP Notice:  Use of undefined constant MAX_SIZE_IMAGE_UPLOAD_SIS - assumed 'MAX_SIZE_IMAGE_UPLOAD_SIS' in /home/computek/public_html/admin/modulos/mod_panel/scripts/producto.script.php on line 131

@@ -1,0 +1,1 @@
+[20-Jun-2019 17:07:12 America/LIma] PHP Fatal error:  Call to a member function prepare() on null in /home/computek/public_html/admin/clases/class.conecta.php on line 24
