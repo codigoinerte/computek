@@ -1,15 +1,11 @@
-  <div class="main-container col2-right-layout">
-    <div class="main container">
-      <div class="row">
-        <div class="col-sm-9">
-        <div class="col-main">
-          <div class="page-title">
-            <h2><?php echo $nombre_registro; ?></h2>
-          </div>
-          <div class="blog-wrapper" id="main">
-            <div class="site-content" id="primary">
-              <div role="main" id="content">
-               		<?php
+  <section class="container mx-auto px-4 sm:px-8 xl:px-4">
+	<div class="mb-6 grid grid-cols-8 gap-7">
+		<div class="order-2 col-span-8 lg:order-1 lg:col-span-2">
+			<?php include ("lateral.php"); ?>
+		</div>
+		<div class="order-1 col-span-8 lg:order-2 lg:col-span-6">
+			<div class="grid grid-cols-6 gap-5">
+				<?php
 				    $listado_relacionados = $datos_reg_home-> listar_registro_relacionados($id_registro, 3);
 				  	if(count($listado_relacionados) > 0)
 					{
@@ -19,34 +15,24 @@
 							 $_item_nombre = isset($item["nombre"])?$item["nombre"]:'';
 							 $_item_descripcion = isset($item["descripcion"])?$item["descripcion"]:'';
 						?>
-						<article class="blog_entry clearfix wow">
-						  <header class="blog_entry-header clearfix">
-							<div class="blog_entry-header-inner">
-							  <h2 class="blog_entry-title">
-								<a rel="bookmark" href="<?php echo URL_WEB.$_item_alias; ?>"><?php echo $_item_nombre; ?></a>
-							  </h2>
+						<div class="group col-span-6 overflow-hidden rounded-lg bg-white shadow-[0_2px_10px_rgba(131,125,125,.12)] sm:col-span-3 lg:col-span-2">
+							<div class="px-5 pb-5 pt-6">
+								<a href="<?php echo URL_WEB.$_item_alias; ?>" class="line-clamp-2 text-base font-bold text-default-600 transition-all duration-300 hover:text-primary-500">
+									<?php echo $_item_nombre; ?>
+								</a>
+								<p class="my-2 line-clamp-3 break-all">
+									<?php echo strip_tags(add3dots($_item_descripcion, 300)); ?>
+								</p>
+								<a class="mt-2 inline-block text-primary-500 underline transition-all duration-300 hover:no-underline" href="<?php echo URL_WEB.$_item_alias; ?>">
+									Leer m&aacute;s
+								</a>
 							</div>
-							<!--blog_entry-header-inner--> 
-						  </header>
-						  <div class="entry-content">						
-							<div class="entry-content">						
-							  <?php echo strip_tags(add3dots($_item_descripcion, 300)); ?>
-							</div>
-							<p> <a class="btn" href="blog_single_post.html">Read More</a> </p>
-						  </div>					  
-						</article>
+						</div>
 						<?php
 						}
 					}
-					?>	
-              </div>
-            </div>
-            
-          </div>
-        </div></div>
-        <div class="col-right sidebar col-sm-3 col-xs-12">
-          <?php include ("lateral.php"); ?>
-        </div>
-      </div>
-    </div>
-  </div>
+				?>	
+			</div>
+		</div>
+	</div>
+  </section>
