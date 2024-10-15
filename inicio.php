@@ -141,4 +141,49 @@
       </div>
     </section>
 
+    <?php
+        $listado_categorias = $datos_reg_home->listar_categoriasxpagina(2);
+        if(count($listado_categorias) > 0)
+        {  	$num=1;
+            foreach($listado_categorias as $item)
+            {
+                $idcategoria = isset($item["id"])?$item["id"]:0;
+                $categoria = isset($item["nombre"])?$item["nombre"]:'';
+
+                $listado_registros_nuevos = $datos_reg_home->listar_registros_nuevos($idcategoria, 3, 4);
+                if(count($listado_registros_nuevos) > 0)
+                {
+                    ?>
+                        <section class="container mx-auto px-4 sm:px-8 xl:px-4">
+                            <div class="swiper swiper-cards relative my-10 overflow-hidden">
+                                <div class="mb-8 flex items-center justify-between border-b-[3px] pb-2">
+                                <h2 class="relative text-2xl font-bold text-default-600 after:absolute after:-bottom-[11px] after:left-0 after:h-[3px] after:w-full after:bg-primary-500 after:content-['']">
+                                    <?php echo $categoria; ?>
+                                </h2>
+                                <div class="flex items-center gap-1">
+                                    <div class="button-prev select-none rounded-md bg-default-400 px-[10px] py-1 text-white transition-all duration-300 hover:bg-primary-500">
+                                    &#10094;
+                                    </div>
+                                    <div class="button-next select-none rounded-md bg-default-400 px-[10px] py-1 text-white transition-all duration-300 hover:bg-primary-500">
+                                    &#10095;
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="swiper-wrapper">
+                                    
+                                    <?php foreach($listado_registros_nuevos as $item){ ?>		
+                                        <div class="swiper-slide h-auto">
+                                            <?php listado_item_producto($item); ?>
+                                        </div>
+                                    <?php } ?>                                    
+                        
+                                </div>
+                            </div>
+                        </section>
+                    <?php
+                }
+            }
+        }
+    ?>
+
     <?php echo mostrar_modulo_web(660, 6); ?>
