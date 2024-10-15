@@ -1,161 +1,145 @@
+
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<!--[if IE]>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<![endif]-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
-<?php  include "librerias/mod_seo/seo.php" ;  ?>
-<!-- CSS Style --->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+    
+    <?php  include "librerias/mod_seo/seo.php" ;  ?>
+    <!-- CSS Style --->
 
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/font-awesome.min.css" media="all">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/simple-line-icons.css" media="all">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/owl.theme.css">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/jquery.bxslider.css">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/jquery.mobile-menu.css">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/style.css" media="all">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/revslider.css">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/jquery.fancybox.min.css">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/responsiveslides.css">
-<link rel="stylesheet" type="text/css" href="<?php echo URL_WEB; ?>css/estilo.css">
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/rater-js/rater-js.css" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/metisMenu/metismenujs.min.css" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>css/styles.css" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>css/estilo.css" />
+    
+  </head>
+  <body
+    class="font-montserrat font-medium text-default-500 lg:text-sm">
+    <div class="header sticky top-0 -z-[1]"></div>
 
-<style>
-<?php 
-	
-/*
-include ("css/compress.css.php");
-$cache_file=URL_ROOT_ADMIN."cache/".md5(URL_WEB."cache_css_web_home").".php"; 
-$cache_var='';
-if(!file_exists($cache_file))
-{	
-	$files = glob(URL_ROOT.'css/*.css'); //obtenemos todos los nombres de los ficheros
-	foreach($files as $file)
-	{
-		if(is_file($file))
-		#unlink($file); //elimino el fichero
-		$css_contenido = file_get_contents($file);
-		$cache_var.=$css_contenido;
-	}
-	file_put_contents($cache_file, $cache_var, FILE_APPEND | LOCK_EX);
-	echo $cache_var;	
-}
-else
-{
-	include $cache_file ;
-}	
-	*/
-?>
-</style>	
-<!-- Google Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
-</head>
-
-<body class="cms-index-index cms-home-page">
-<div id="page"> 
-	
-	
-  <!-- Header -->
-<?php	
-$cache_file=URL_ROOT_ADMIN."cache/".md5(URL_WEB."cache_header_web".$_alias).".php"; 
-$cache_var='';
-if(!file_exists($cache_file))
-{
-	
-  $cache_var.='<header>
-    <div class="header-container">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 logo-block"> 
-            <!-- Header Logo -->
-            <div class="logo">
-				<a title="Computek" href="'.URL_WEB.'">
-					<img alt="Computek" src="'.URL_WEB.'images/logo.jpg">
-				</a>
-			</div>
-			<div class="wspp_responsive hidden-sm hidden-md hidden-lg">';
-					$cache_var.=contacto_empresa(4);
-				$cache_var.='
-			</div>
-            <!-- End Header Logo --> 
+    <header
+      class="relative z-10 bg-[#f5f5f5] transition-all duration-300">
+      <div class="container mx-auto px-4 sm:px-8 xl:px-4">
+        <div class="flex w-full items-center py-5 lg:justify-between">
+          <div
+            class="mr-5 cursor-pointer text-default-600 lg:hidden"
+            data-target=".modal-menu">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="pointer-events-none h-6 w-6">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
           </div>
-          <div class="col-lg-4 col-md-3 col-sm-4 col-xs-3 hidden-xs category-search-form">
-            <div class="search-box">
-				<form action="'.URL_WEB.'buscador" method="post">
-					<input id="search" type="text" name="buscar" placeholder="Ingrese su busqueda..." class="searchbox" maxlength="128">
-					<button type="submit" title="Search" class="search-btn-bg">
-						<span><i class="fa fa-search"></i></span>
-					</button>
-				</form>	
+          <a href="<?php echo URL_WEB; ?>" class="mr-auto flex items-center gap-2 lg:mr-0">
+            <img class="h-10" src="<?php echo URL_WEB; ?>images/logo.png" alt="logo" />            
+          </a>
+          <form class="hidden w-[590px] lg:flex" action="<?php echo URL_WEB. 'buscador'; ?>" method="post">
+            <div class="relative w-full">
+              <input type="search" class="peer block w-full appearance-none rounded-l-lg border border-r-0 border-primary-500 bg-white px-2 pb-2 pt-4 text-sm focus:outline-none focus:ring-0" placeholder=" " name="buscar"  />
+              <label for="search" class="z-1 pointer-events-none absolute left-2.5 top-[13px] origin-[0] -translate-y-3 scale-75 transform text-sm text-default-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75 peer-focus:text-primary-500">
+                Ingrese su busqueda...
+              </label>
+            </div>
+            <button
+              class="rounded-r-lg bg-primary-500 p-[9px] text-white"
+              type="submit">
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-6 w-6">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </form>
+          <div class="flex items-center gap-5">
+            &nbsp;
+            <div class="whatsapp">
+              <?php echo contacto_empresa(4); ?>
             </div>
           </div>
-          <!-- Header Language -->
-          <div class="col-xs-12 col-sm-6 col-md-7 col-lg-6 pull-right hidden-xs">
-              <div class="col-xs-12 hidden-xs hidden-sm hidden-md col-lg-8">';
-			  	$cache_var.=contacto_empresa(5);
-			  $cache_var.='</div>
-			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-right">';
-              	$cache_var.=contacto_empresa(4);
-			  $cache_var.='</div>	  
-          </div>
         </div>
-      </div>
-    </div>
-  </header>
-  <nav>
-    <div class="container">
-      <div class="mm-toggle-wrap">
-        <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
-      </div>
-	  <div class="clearfix"></div>
-      <div class="nav-inner"> 
-        <!-- BEGIN NAV -->
-        <ul id="nav" class="hidden-xs">';
-	
-			$active1=$active2=$active3=$active5=$active6=$active7=$active8=$active99="";
-			if($_alias=='index')
-			{
-				$active1='active';		
-			}
-			else if($_alias=='sobre-nosotros')
-			{
-				$active2='active';
-			}
-			else if($_alias=='contactenos')
-			{
-				$active99='active';
-			}
-		 
-          $cache_var.='<li><a href="'.URL_WEB.'" class="'.$active1.'"><span>Inicio</span></a></li>
-          <li><a href="'.URL_WEB.'sobre-nosotros" class="'.$active2.'"><span>Nosotros</span></a></li>';
-	
-		  $listado_menu = $datos_reg_home->listar_categoriasxpagina(2);
-			if(count($listado_menu) > 0)
-			{
-				foreach($listado_menu as $item)
-				{
-					$item_nombre = isset($item["nombre"])?$item["nombre"]:'';
-					$item_alias = isset($item["alias"])?URL_WEB.$item["alias"]:'';
-					
-          			$cache_var.='<li><a href="'.$item_alias.'" class="'.(($item["alias"]==$_alias)?"active":"").'"><span>'.$item_nombre.'</span></a></li>';
-			  } 
-		   } 
-		  $cache_var.='<li><a href="'.URL_WEB.'contactenos" class="'.$active99.'"><span>Contactenos</span></a></li>';		
-        $cache_var.='</ul>
+        <nav class="nav-main hidden items-center lg:flex">
+          <?php
+            $active1=$active2=$active3=$active5=$active6=$active7=$active8=$active99="";
+            if($_alias=='index')
+            {
+              $active1='active';		
+            }
+            else if($_alias=='sobre-nosotros')
+            {
+              $active2='active';
+            }
+            else if($_alias=='contactenos')
+            {
+              $active99='active';
+            }
+          
+          ?>
+          <ul class="flex gap-10 font-semibold">
+            <li>
+              <a
+                class="<?php echo $active1; ?> relative block py-3 transition-all duration-300 after:absolute after:-bottom-[5px] after:-top-[2px] after:left-0 after:h-[2px] after:w-0 after:bg-primary-500 after:transition-all after:duration-300 after:content-[''] hover:text-primary-500 hover:after:w-full"
+                href="<?php echo URL_WEB; ?>">
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a
+                class="<?php echo $active2; ?> relative block py-3 transition-all duration-300 after:absolute after:-bottom-[5px] after:-top-[2px] after:left-0 after:h-[2px] after:w-0 after:bg-primary-500 after:transition-all after:duration-300 after:content-[''] hover:text-primary-500 hover:after:w-full"
+                href="about.html">
+                Nosotros
+              </a>
+            </li>
 
+            <?php 
+            $listado_menu = $datos_reg_home->listar_categoriasxpagina(2);
+            if(count($listado_menu) > 0)
+            {
+              foreach($listado_menu as $item)
+              {
+                $item_nombre = isset($item["nombre"])?$item["nombre"]:'';
+                $item_alias = isset($item["alias"])?URL_WEB.$item["alias"]:'';
+                $item_active = ($item["alias"]==$_alias)?"active":"";
+                ?>
+                  <li>
+                    <a
+                      class="<?php echo $item_active; ?> relative block py-3 transition-all duration-300 after:absolute after:-bottom-[5px] after:-top-[2px] after:left-0 after:h-[2px] after:w-0 after:bg-primary-500 after:transition-all after:duration-300 after:content-[''] hover:text-primary-500 hover:after:w-full"
+                      href="<?php echo $item_alias; ?>">
+                      <?php echo $item_nombre; ?>
+                    </a>
+                  </li>
+                <?php
+              } 
+            }
+            ?>            
+
+            <li>
+              <a
+                class="<?php echo $active99; ?> relative block py-3 transition-all duration-300 after:absolute after:-bottom-[5px] after:-top-[2px] after:left-0 after:h-[2px] after:w-0 after:bg-primary-500 after:transition-all after:duration-300 after:content-[''] hover:text-primary-500 hover:after:w-full"
+                href="<?php echo URL_WEB. "contactenos"; ?>">
+                Contactenos
+              </a>
+            </li>            
+          </ul>
+        </nav>
       </div>
-    </div>
-  </nav>
-  <div class="clearfix"></div>';
-	
-	file_put_contents($cache_file, $cache_var, FILE_APPEND | LOCK_EX);
-	echo $cache_var;	
-}
-else
-{
-	include $cache_file ;
-}	
+    </header>

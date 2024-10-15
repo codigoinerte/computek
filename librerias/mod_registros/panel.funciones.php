@@ -62,12 +62,65 @@ function mostrar_modulo_web($id, $tipo=0)
 		}
 		else if($tipo==1)
 		{
-			
-				$var.='<a href="'.(($url=='')?URL_WEB:$url).'">
-					<img alt="Free Shipping" src="'.$imagen.'">
-				</a>';
-			
+			$var.='<h1 class="relative mb-5 pb-2 text-lg font-semibold text-black after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-16 after:bg-primary-300 after:content-[\'\']">
+                	'.$nombre.'
+				</h1>
+				<p class="leading-6 color-gray-6">'.(strip_tags($descripcion)).'</p>
+              <div class="mt-5 flex gap-3">
+                <a class="h-10" href="#">
+                  <img
+                    class="h-full"
+                    src="'.$imagen.'"
+                    alt="Compustore" />
+                </a>
+              </div>';										
 		}
+		else if($tipo == 2){
+			$var.= strip_tags($descripcion);
+		}else if($tipo == 3){
+			$var.='<p class="leading-6">'.(strip_tags($descripcion)).'</p>
+                <div class="mt-2 flex gap-3">
+                  <a class="h-10" href="#">
+                    <img
+                      class="h-full"
+                      src="'.$imagen.'"
+                      alt="Compustore" />
+                  </a>
+                </div>';
+		}else if($tipo== 4){
+			$var.='<div class="col-span-12 overflow-hidden rounded-lg shadow-md md:col-span-4">
+					<img class="h-full w-full" src="'.$imagen.'" alt="banner" />
+				</div>';
+		}else if($tipo== 5){
+			$var.='<h2 class="text-base font-semibold text-default-600">'.$nombre.'</h2>
+					<p class="text-default-400">'.$resumen.'</p>';
+		}else if($tipo== 6){
+			$var.='    <div class="container mx-auto my-10 px-4 sm:px-8 xl:px-4">
+						<div
+							class="flex flex-col items-center justify-center gap-5 rounded-lg bg-primary-500 px-4 py-10 text-white lg:flex-row lg:gap-0">
+							<div
+							class="relative flex items-center gap-5 lg:mr-10 lg:pr-10 lg:after:absolute lg:after:right-0 lg:after:h-10 lg:after:w-[2px] lg:after:bg-primary-300 lg:after:content-[\'\']">
+							<svg
+								class="h-16 w-16 text-white"
+								stroke="currentColor"
+								fill="currentColor"
+								stroke-width="0"
+								viewBox="0 0 640 512"
+								height="200px"
+								width="200px"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+								d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 208c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"></path>
+							</svg>
+							<p class="text-2xl font-bold uppercase">'.$nombre.'</p>
+							</div>
+							<p class="text-center text-lg">
+								'.(strip_tags($descripcion)).'
+							</p>
+						</div>
+						</div>';
+		}
+		/*
 		else if($tipo==2)
 		{
 			$listado_imagenes = $datos_reg_home->listar_registro_relacionados($id, 4);
@@ -155,6 +208,7 @@ function mostrar_modulo_web($id, $tipo=0)
 			</div>';
 			
 		}
+		*/
 	}
 	return  $var;
 }
@@ -182,27 +236,28 @@ function contacto_empresa($tipo_dato, $tipo=0, $tabla='mod_empresa', $idregistro
 			if($tipo==1)
 			{
 							
-				$var.='<div class="info-contacto">
-					'.$icono.'
-					<span>
-						<a href="https://wa.me/51'.$dato.'">'.$dato.'</a>
-					</span>	
-				</div>';				
+				$var.='<a href="https://wa.me/51'.$dato.'">'.$dato.'</a>';
 				
 			}
 			else if($tipo==2)
 			{
 				
-				$var.='<div class="phone-footer">
-				 '.$icono.' '.$dato.'
-				</div>';	
+				$var.= $dato;	
 				
 			}
 			else
 			{
-				$var.='<div class="info-contacto-whatsapp">
-					<a target="_blank" href="https://wa.me/51'.$dato.'">'.$icono.' '.$dato.'</a>						
-				</div>';								
+				$var.='<a target="_blank" href="https://wa.me/51'.$dato.'">
+					<svg 
+						xmlns="http://www.w3.org/2000/svg" 
+						
+						width="16"
+						height="16"
+						fill="currentColor"
+						class="h-6 w-6"
+						viewBox="0 0 448 512">
+						<path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                  	</svg> <span>'.$dato.'</span></a>';
 			}
 		}
 		else if($tipo_dato==5) #Direccion
@@ -210,39 +265,38 @@ function contacto_empresa($tipo_dato, $tipo=0, $tabla='mod_empresa', $idregistro
 			if($tipo==1)
 			{
 				
-				$var.='<address>'.$icono.' '.$dato.'</address>';
+				$var.='<address>'.$dato.'</address>';
 				
 			}
 			else
 			{
-			$var.='<div class="info-contacto direccion">
-						'.$icono.'
-						<span>
-							<a href="https://wa.me/51'.$dato.'">'.$dato.'</a>
-						</span>	
-					</div>';			
+				$var.='<a href="https://wa.me/51'.$dato.'">'.$dato.'</a>';
 			}
+		}
+		else if($tipo_dato==11) #Correo
+		{		
+			$var.='<a class="transition-all duration-300 color-gray-6 hover:text-black" href="mailto:'.$dato.'">'.$dato.'</a>';
 		}
 		else if($tipo_dato==2) #Celular
 		{
-			$var.='<div class="phone-footer">'.$icono.' '.$dato.'</div>';
+			$var.=$dato;
 			
 		}
 		else if($tipo_dato==6) #Facebook
 		{
-			$var.='<li class="fb"><a href="'.$dato.'"></a></li>';
+			$var.= $dato;
 		}
 		else if($tipo_dato==7) #Twitter
 		{
-			$var.='<li class="tw"><a href="'.$dato.'"></a></li>';
+			$var.= $dato;
 		}
 		else if($tipo_dato==8) #Instagram
 		{
-			$var.='<li class="instagram"><a href="'.$dato.'"></a></li>';
+			$var.= $dato;
 		}
 		else if($tipo_dato==9) #Skype
 		{
-			$var.='<li class="skype"><a href="'.$dato.'"></a></li>';
+			$var.= $dato;
 		}
 		
 
@@ -313,79 +367,65 @@ function listado_item_producto($item)
 		$item_precio=$item_precio-(($item_precio*$item_descuento)/100);
 	}	
 	?>
-	<div class="item-inner">
-	  <div class="item-img">
-		<div class="item-img-info">
-			<a class="product-image" title="<?php echo $item_producto; ?>" style="cursor: pointer;"  data-fancybox data-type="iframe" data-src="<?php echo URL_WEB."vista.rapida.php?alias=".$item["alias"]; ?>" href="javascript:;">									
-				<img alt="<?php echo $item_producto; ?>" class="bg-contain" style="background: url('<?php echo $item_imagen_destacada; ?>')" src="<?php echo URL_WEB."images/bg-producto.png" ?>">									
-			</a>
-		  <?php if($item_descuento > 0){ ?>	
-		  <div class="sale-label sale-top-left"><?php echo $item_descuento." %"; ?></div>
-		  <?php } ?>	
-		  <?php if($item_estado!==''){ ?>	
-		  <div class="new-label new-top-right"><?php echo $item_estado; ?></div>
-		  <?php } ?>	
-		  <div class="box-hover">
-			<ul class="add-to-links">
-			  <li><a class="link-quickview" style="cursor: pointer;"  data-fancybox data-type="iframe" data-src="<?php echo URL_WEB."vista.rapida.php?alias=".$item["alias"]; ?>" href="javascript:;">Vista rapida</a></li>			  
-			</ul>
-		  </div>
-		</div>
-	  </div>
-	  <div class="item-info">
-		<div class="info-inner">
-		  <div class="item-title">
-			  <a title="<?php echo $item_producto; ?>" style="cursor: pointer;"  data-fancybox data-type="iframe" data-src="<?php echo URL_WEB."vista.rapida.php?alias=".$item["alias"]; ?>" href="javascript:;"> <?php echo $item_producto; ?> </a>
-		  </div>
-		  <div class="item-content">
-			 <div class="text-center">
-			 	<?php
-				if($item_stock > 0)
-				{
-					?>
-				 	<span class="badge stock"><i class="fa fa-check" aria-hidden="true"></i> En stock</span>
-				 	<?php
-				}
-				else
-				{
-					?>
-				 	<span class="badge out-stock"><i class="fa fa-times" aria-hidden="true"></i> Sin stock</span>
-				 	<?php
-				}
+	<div class="relative flex h-full flex-col overflow-hidden rounded-lg bg-gray shadow-lg hover:shadow-xl swipper-card">
+		<a href="<?php echo $item_alias; ?>" class="block h-[270px]">
+			<img class="h-full w-full object-contain" src="<?php echo $item_imagen_destacada; ?>" alt="<?php echo $item_producto; ?>" />
+		</a>
+		<div class="mt-2 px-5">
+			<div class="border-t border-slate-300">
+				<div class="rater my-2" data-rater="5"></div>
+				<a href="<?php echo $item_alias; ?>" class="my-2 line-clamp-2 text-default-600 transition-all duration-300 hover:text-primary-500">
+					<?php echo $item_producto; ?>
+				</a>
+				<span class="mb-2 inline-block text-base font-bold text-primary-500">
+					<?php if($item_descuento == 0){ ?>
+					<span class="regular-price">
+						<span class="price">S/. <?php echo redondear_precio($item_precio); ?></span>
+					</span>
+					<?php }else{ ?>
+					<div class="price-box">
+						<p class="old-price"><span class="price-label">Precio regular:</span> <span class="price"><?php echo "S/ ".(redondear_precio($item_precio_first)); ?> </span> </p>
+						<p class="special-price"><span class="price-label">Promoci&oacute;n</span> <span class="price"><?php echo "S/ ".(redondear_precio($item_precio)); ?> </span> </p>
+						</div>
+					<?php } ?>					
+				</span>
+			</div>
+			<div>
+				<?php
+					if($item_stock > 0)
+					{
+						?>
+						<span class="pointer-events-none inline-block rounded-md bg-green-500 px-2 mb-1 text-white">
+							En stock
+						</span>
+						<?php
+					}
+					else
+					{
+						?>
+						<span class="pointer-events-none inline-block rounded-md bg-orange-300 px-2 mb-1 text-white">
+							Sin stock
+						</span>
+						<?php
+					}
 				?>
-			 </div> 	
-			<?php if($item_precio > 0 || $item_idtipo==3){ ?>  
-			<div class="rating">
-			  <div class="ratings">
-				<div class="rating-box">
-				  <div style="width:80%" class="rating"></div>
-				</div>
-				<p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-			  </div>
 			</div>
-			  
-			<div class="item-price">
-			  <div class="price-box">
-				  <?php if($item_descuento == 0){ ?>
-				  <span class="regular-price">
-					  <span class="price">S/. <?php echo redondear_precio($item_precio); ?></span>
-				  </span>
-				  <?php }else{ ?>
-				  <div class="price-box">
-					  <p class="old-price"><span class="price-label">Precio regular:</span> <span class="price"><?php echo "S/ ".(redondear_precio($item_precio_first)); ?> </span> </p>
-					  <p class="special-price"><span class="price-label">Promoci&oacute;n</span> <span class="price"><?php echo "S/ ".(redondear_precio($item_precio)); ?> </span> </p>
-					</div>
-				  <?php } ?>
-			  </div>
-			</div>
-			<?php } ?>  
-			<div class="action">									
-				<a href="<?php echo $item_alias; ?>" class="button btn-cart">Leer m&aacute;s</a>
-			</div>
-		  </div>
 		</div>
-	  </div>
+		<a href="<?php echo $item_alias; ?>" class="mx-5 mb-5 mt-auto w-fit rounded-md bg-primary-500 px-3 py-2 uppercase text-white transition-all duration-300 hover:bg-primary-600">
+			Leer m&aacute;s
+		</a>
+		<?php if($item_estado!==''){ ?>				
+			<span class="pointer-events-none absolute left-4 top-4 rounded-md bg-primary-500 px-2 text-white">
+				<?php echo $item_estado; ?>
+			</span>
+		<?php } ?>
+		<?php if($item_descuento > 0){ ?>	
+			<span class="pointer-events-none absolute right-4 top-4 rounded-md bg-red-400 px-2 text-white">
+				<?php echo $item_descuento." %"; ?>
+			</span>
+		<?php } ?>
 	</div>
+
 	<?php
 }
 function sanitizeOutput($buffer) {

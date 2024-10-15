@@ -317,5 +317,16 @@ class registros_home
 		$query="DELETE FROM `mod_estadistica_posicion` WHERE ip = ? ";
 		$this->data->updateQuery($query,array("$ip"));			
 	}
+	public function get_marcas($limit = 0){
+		$lista="";
+		$query="SELECT id, marca, imagen 
+				FROM mod_panel_registro_marca 
+				";
+		if($limit > 0){
+			$query.=" LIMIT 0, $limit";
+		}
+		$lista = $this->data->executeQuery($query);
+		return $lista;
+	}
 }
 ?>
