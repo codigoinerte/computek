@@ -105,7 +105,7 @@
             <li>
               <a
                 class="<?php echo $active2; ?> relative block py-3 transition-all duration-300 after:absolute after:-bottom-[5px] after:-top-[2px] after:left-0 after:h-[2px] after:w-0 after:bg-primary-500 after:transition-all after:duration-300 after:content-[''] hover:text-primary-500 hover:after:w-full"
-                href="about.html">
+                href="<?php echo URL_WEB; ?>sobre-nosotros">
                 Nosotros
               </a>
             </li>
