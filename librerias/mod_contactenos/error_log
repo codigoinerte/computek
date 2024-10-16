@@ -1,2 +1,0 @@
-[16-Apr-2019 14:20:40 America/LIma] PHP Notice:  fputs(): send of 22 bytes failed with errno=32 Tubería rota in /home/computek/public_html/admin/clases/class.smtp.php on line 494
-[16-Apr-2019 14:20:50 America/LIma] PHP Notice:  fputs(): send of 22 bytes failed with errno=32 Tubería rota in /home/computek/public_html/admin/clases/class.smtp.php on line 494

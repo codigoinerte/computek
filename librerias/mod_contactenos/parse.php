@@ -42,7 +42,7 @@ $sender_message = stripslashes(trim($_POST[$campo_mensaje]));
 if($sender_name != NULL && $sender_telephone != NULL && $sender_email != NULL && $_SESSION['secure'] == md5(COD_SEG)) 
 {
 //echo "sn=".$sender_name."st=".$sender_telephone."se=".$sender_email."sm=".$sender_message;
-        $image= URL_ROOT."/images/logo.jpg";
+        $image= URL_ROOT."/images/logo.png";
 		$cid = "logo";
 		
 		if($sender_asunto!='')

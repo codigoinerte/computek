@@ -225,7 +225,7 @@ function contacto_empresa($tipo_dato, $tipo=0, $tabla='mod_empresa', $idregistro
 {
 	$var='';
 	$datos_registro = new registros_home();
-	$detalle_info = $datos_registro-> info_empresa($tabla, $tipo_dato, $idregistro, 1);	
+	$detalle_info = $datos_registro-> info_empresa($tabla, $tipo_dato, $idregistro, 1);
 	if(count($detalle_info) > 0)
 	{
 		$icono = isset($detalle_info[0]["icono"])?$detalle_info[0]["icono"]:'';
@@ -275,7 +275,15 @@ function contacto_empresa($tipo_dato, $tipo=0, $tabla='mod_empresa', $idregistro
 		}
 		else if($tipo_dato==11) #Correo
 		{		
-			$var.='<a class="transition-all duration-300 color-gray-6 hover:text-black" href="mailto:'.$dato.'">'.$dato.'</a>';
+			if($tipo == 1){
+				$var.='<a href="mailto:'.$dato.'">'.$dato.'</a>';
+			}else{
+				$var.='<a class="transition-all duration-300 color-gray-6 hover:text-black" href="mailto:'.$dato.'">'.$dato.'</a>';
+			}
+		}
+		else if($tipo_dato==12) #Horario
+		{
+			$var.=$dato;
 		}
 		else if($tipo_dato==2) #Celular
 		{

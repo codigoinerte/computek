@@ -44,3 +44,8 @@ address{
 .whatsapp a span{
     margin-top:3px;
 }
+.mapa iframe{
+    width: 100%;
+    height: 350px;
+    border-radius: 15px;
+}
