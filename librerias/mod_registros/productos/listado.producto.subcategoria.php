@@ -1,14 +1,6 @@
-<section class="main-container col2-left-layout">
-
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-sm-12">
-          <article >
-
-            <h2 class="page-heading"> <span class="page-heading-title"><?php echo $nombre_registro; ?></span> </h2>
-
+<section class="container mx-auto px-4 sm:px-8 xl:px-4">
+	<div class="mb-6 grid grid-cols-6 gap-7">
+		<div class="order-1 col-span-12 lg:order-2 lg:col-span-6">
 
 		<?php
 
@@ -37,14 +29,8 @@
         ################################DISEÑO DE CATALOGO#########################################
 
         if($numeroRegistros > 0)
-
         {
-
-        ?>
-
-		<div class="row">
-			<?php				
-
+			
 			foreach($lproductos as $item)
 			{
 				$item_subcategoria = isset($item["nombre"])?$item["nombre"]:'';
@@ -52,134 +38,114 @@
 				$item_id = isset($item["id"])?$item["id"]:'';
 				
 				$url_subcategoria = URL_WEB.$item_alias;
+
+				$listado_productos_destacados = $datos_reg_home->listar_registros_destacadosxpadre(3, 6, $item_id);
 				?>
-				<?php #listado_item_producto($item); ?>
-				<div class="col-md-12 col-sm-12 col-xs-12 featured-pro-block">
-					  <div class="home-block-inner">
-						<div class="block-title">
-						  <h2><a href="<?php echo $url_subcategoria; ?>"><?php echo $item_subcategoria; ?></a></h2>
-						</div>
-					  </div>
-					  <?php $listado_productos_destacados = $datos_reg_home->listar_registros_destacadosxpadre(3, 6, $item_id);
-				#listar_registros_destacados(3, 6); ?>	
-
-					  <div class="slider-items-products">
-						<?php if(count($listado_productos_destacados) > 0){ ?>  
-						<div class="new-arrivals-block">
-						  <div id="new-arrivals-slider" class="product-flexslider hidden-buttons">
-							<div class="slider-items slider-width-col4 products-grid block-content">
-							  <?php foreach($listado_productos_destacados as $item){ ?>		
-							  <div class="item">
-								<?php listado_item_producto($item); ?>
-							  </div>
-							  <?php } ?>                  
-							</div>
-						  </div>
-						</div>
-						  <div class="clearfix"></div>
-						  <div class="row">
-						  	<div class="col-xs-12 text-center">
-							  <a class="btn btn-lg link" href="<?php echo $url_subcategoria; ?>">Ver m&aacute;s</a>
-							</div>
-						  </div>
-						<?php }else{ ?>  
-						<h4 align="center">No hay productos nuevos</h4>  
-						<?php } ?>  
-					  </div>
-					</div>
-
-
-			  	<?php
-
 				
+						
+					
+								<div class="mb-8 flex items-center justify-between border-b-[3px] pb-2">
+									<h2 class="relative text-2xl font-bold text-default-600 after:absolute after:-bottom-[11px] after:left-0 after:h-[3px] after:w-full after:bg-primary-500 after:content-['']">
+										<a href="<?php echo $url_subcategoria; ?>"><?php echo $item_subcategoria; ?></a>
+									</h2>
+								</div>								
+																						
+								<?php if(count($listado_productos_destacados) > 0){ ?>  
+								
+								<div class="grid grid-cols-md-6 grid-cols-8 gap-5">
+								<?php foreach($listado_productos_destacados as $item){ ?>		
+									<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+										<?php listado_item_producto($item); ?>
+									</div>
+								<?php } ?>                  
+								</div>
+								
+								<div class="clearfix"></div>
 
+								<div class="flex justify-center align-center">
+									<a class="btn-show-more" href="<?php echo $url_subcategoria; ?>">Ver m&aacute;s</a>									
+								</div>
+								<?php }else{ ?>  
+								<h4 align="center">No hay productos nuevos</h4>  
+								<?php } ?>  
+
+
+							
+						
+							
+				<?php
 			}
 
-			?>
-		</div>
-
-        <?php
-
-
-
         ###########################################################################################
-
-
-
-
-
         ###############################DISEÑO DE PAGINACION########################################
 
-
-
         ?>
-
+		
 		<div class="toolbar">	
-
 			<div class="row">
-
 				<div class="col-xs-12">
-
-			<?php 
-
-			if($numeroRegistros > 9):
-
-				$_alias_registro = $_alias."_";
-
-				echo '<nav aria-label="Page navigation">';
-
-				echo '<div class="pager"><div class="pages"><ul class="pagination ">';
-
-				if($pagina>1) 
-
-				{ 
-
-				   echo '<li><a href="'.URL_WEB.$_alias_registro.($pagina-1).'" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
-
-				} 
-
-				for($i=$inicio;$i<=$final;$i++) 
-
-				{ 
-
-				   if($i==$pagina) 
-
-				   { 
-
-					  echo '<li class="active"><a href="#">'.$i.'<span class="sr-only">(current)</span></a></li>';
-
-				   }
-
-				   else
-
-				   { 
-
-					  echo '<li><a href="'.URL_WEB.$_alias_registro.$i.'">'.$i.'</a></li>';
-
-				   } 
-
-				} 
-
-				if($pagina<$numPags) 
-
-				{ 
-
-				   echo '<li><a href="'.URL_WEB.$_alias_registro.($pagina+1).'" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
-
-				} 
-
-				echo '</ul></div></div>';
-
-				echo '</nav>';
-
-			endif;   
-
-			?>
-
-			</div>	
-
+					<?php 
+					if($numeroRegistros > 9):
+						$_alias_registro = $_alias."_";						
+						echo '<div class="my-8 flex items-center justify-between"><ul class="flex items-center">';
+						if($pagina>1) 
+						{ 					
+							echo '<li class="px-3 py-2 text-gray-400">
+									<a href="'.URL_WEB.$_alias_registro.($pagina-1).'" aria-label="Previous">
+										<svg
+											class="h-5 w-5"
+											stroke="currentColor"
+											fill="none"
+											stroke-width="2"
+											viewBox="0 0 24 24"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											height="200px"
+											width="200px"
+											xmlns="http://www.w3.org/2000/svg">
+											<line x1="19" y1="12" x2="5" y2="12"></line>
+											<polyline points="12 19 5 12 12 5"></polyline>
+										</svg>
+									</a>
+								</li>';
+						} 
+						for($i=$inicio;$i<=$final;$i++) 
+						{ 
+							if($i==$pagina) 
+							{ 
+								echo '<li class="cursor-pointer rounded-lg bg-primary-500 px-3 py-2 text-white">'.$i.'</li>';
+							}
+							else
+							{ 
+								echo '<li class="cursor-pointer rounded-lg px-3 py-2"><a href="'.URL_WEB.$_alias_registro.$i.'">'.$i.'</a></li>';
+							} 
+						} 
+						if($pagina<$numPags) 
+						{ 
+							echo '<li class="cursor-pointer rounded-lg px-3 py-2 text-primary-500">
+									<a href="'.URL_WEB.$_alias_registro.($pagina+1).'" aria-label="Next">
+										<svg
+											class="h-5 w-5"
+											stroke="currentColor"
+											fill="none"
+											stroke-width="2"
+											viewBox="0 0 24 24"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											height="200px"
+											width="200px"
+											xmlns="http://www.w3.org/2000/svg">
+											<line x1="5" y1="12" x2="19" y2="12"></line>
+											<polyline points="12 5 19 12 12 19"></polyline>
+										</svg>
+									</a>
+								</li>';
+						} 
+						echo '</ul></div>';			
+					endif;   
+					?>
+				</div>	
 			</div>
-
 		</div>	
 
         <?php
@@ -190,36 +156,23 @@
 
         {
 
-        ?>
+			?>
 
-        <div class="row margin-bottom-30">
 
-        <div class="col-xs-12">
+			<div class="grid grid-cols-6 gap-5">
+				<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 
-	        <h3 align="center">No hay registros</h3>
+					<h3 align="center">No hay registros</h3>
 
-        </div>
+				</div>
+			</div>
 
-        </div>
-
-        <?php
+			<?php
 
         }
 
         ?> 
 
-            
-
-          </article>
-
-          <!--	///*///======    End article  ========= //*/// --> 
-
-        </div>
-
-        
-
-      </div>
-
-    </div>
-
-  </section>			  
+		</div>
+	</div>
+</section>

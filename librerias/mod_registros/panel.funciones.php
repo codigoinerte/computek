@@ -334,7 +334,7 @@ function contacto_empresa_listado($tipo_dato)
 	}
 	return $var;
 }
-function listado_item_producto($item)
+function listado_item_producto($item, $tipo = 1)
 {
 	$item_id = isset($item["id"])?$item["id"]:'';
 	$item_producto = isset($item["nombre"])?$item["nombre"]:'';
@@ -374,8 +374,15 @@ function listado_item_producto($item)
 	{
 		$item_precio=$item_precio-(($item_precio*$item_descuento)/100);
 	}	
+
+	$clases = '';
+	if($tipo == 1){
+		$clases = 'relative flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-lg hover:shadow-xl';
+	}else{
+		$clases = 'relative flex h-full flex-col overflow-hidden rounded-lg bg-gray shadow-lg hover:shadow-xl swipper-card';
+	}
 	?>
-	<div class="relative flex h-full flex-col overflow-hidden rounded-lg bg-gray shadow-lg hover:shadow-xl swipper-card">
+	<div class="<?php echo $clases; ?>">
 		<a href="<?php echo $item_alias; ?>" class="block h-[270px]">
 			<img class="h-full w-full object-contain" src="<?php echo $item_imagen_destacada; ?>" alt="<?php echo $item_producto; ?>" />
 		</a>
