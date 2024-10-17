@@ -27,6 +27,7 @@ header{
 address{
     font-style:normal;
 }
+.btn-whatsapp,
 .whatsapp a{
     padding: 5px 15px;
     border-radius: 5px;
