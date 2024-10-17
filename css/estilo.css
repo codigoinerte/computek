@@ -59,3 +59,9 @@ address{
     margin-bottom: 0.5rem;
     color: #fff;
 }
+.dark{
+    color: #000;
+}
+.font-sm{
+    font-size:12px;
+}

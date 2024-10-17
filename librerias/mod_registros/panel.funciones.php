@@ -398,10 +398,12 @@ function listado_item_producto($item, $tipo = 1)
 						<span class="price">S/. <?php echo redondear_precio($item_precio); ?></span>
 					</span>
 					<?php }else{ ?>
-					<div class="price-box">
-						<p class="old-price"><span class="price-label">Precio regular:</span> <span class="price"><?php echo "S/ ".(redondear_precio($item_precio_first)); ?> </span> </p>
-						<p class="special-price"><span class="price-label">Promoci&oacute;n</span> <span class="price"><?php echo "S/ ".(redondear_precio($item_precio)); ?> </span> </p>
-						</div>
+					<div class="price-box flex gap-3 justify-center align-center">
+						
+						<span class="text-xl font-bold text-primary-500 sm:items-center">S/ <?php echo redondear_precio($item_precio); ?></span>
+						<span class="line-through dark font-sm mt-1">S/ <?php echo redondear_precio($item_precio_first); ?></span>
+						
+					</div>
 					<?php } ?>					
 				</span>
 			</div>
