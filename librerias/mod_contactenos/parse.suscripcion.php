@@ -1,4 +1,6 @@
 <?php
+use Smarty\Smarty;
+
 require "../../admin/funciones/conecta.general.php";
 include URL_ROOT."librerias/mod_contactenos/clases/class.contactenos.php";
 include URL_ROOT."librerias/mod_seo/clases/class.seo.php";
@@ -29,7 +31,7 @@ $token_cancelar = isset($_REQUEST["token"])?$_REQUEST["token"]:'';
 if($suscripcion != 0) 
 {
 
-        $image= URL_ROOT."/images/logo.jpg";
+        $image= URL_ROOT."/images/logo.png";
 		$cid = "logo";
 	
 		$sender_subject="Suscripcion";
@@ -45,8 +47,7 @@ if($suscripcion != 0)
 				/// ENVIAR  A ADMINISTRADOR DATOS DE USUARIO
 				////////////////////////////////////////////// 
 				$sender_subject='Suscripcion';
-				$tpl = new TemplatePower(URL_ROOT."librerias/mod_contactenos/template/contacto_admin_suscripcion.tpl");
-				$tpl->prepare();
+				$tpl = new Smarty();
 				$tpl->assign("email", $sender_email);
 
 				#$tpl->assign("producto",$sender_product);
@@ -55,17 +56,17 @@ if($suscripcion != 0)
 				$tpl->assign("admin", ADMINISTRADOR);		
 				$tpl->assign("info", INFO);				
 				$tpl->assign("footer", FOOTER_CORREO);				
+				$output = $tpl->fetch(URL_ROOT."librerias/mod_contactenos/template/contacto_admin_suscripcion.tpl");
 
-				$respuesta1 = enviar_correo_web(ADMINISTRADOR, CORREO_ADMIN, ADMINISTRADOR, $correo_empresa, $sender_subject, $tpl->getOutputContent(), $image);		
+				$respuesta1 = enviar_correo_web(ADMINISTRADOR, CORREO_ADMIN, ADMINISTRADOR, $correo_empresa, $sender_subject, $output, $image);
 
 				///////////////////////////////////////////////
 				/// ENVIAR  A USUARIO MENSAJE DEL ADMINISTRADOR
 				////////////////////////////////////////////// 
 				$sender_name="Usuario";
 				$link_desuscripcion=URL_WEB."librerias/mod_contactenos/parse.suscripcion.php?suscripcion=2&token=".(base64_encode($sender_email)); 
-				$sender_subject = "Hemos registrado su suscripción.";
-				$tpl2 = new TemplatePower(URL_ROOT."librerias/mod_contactenos/template/contacto_usuario_suscripcion.tpl" );
-				$tpl2->prepare();
+				$sender_subject = utf8_decode("Hemos registrado su suscripción.");
+				$tpl2 = new Smarty();
 				
 				$link = '<a href="'.$link_desuscripcion.'" style="text-decoration: none !important;padding: 7px 10px; background: #5F0001;color: #FFF; border-radius: 2px;">Si desea desuscribirse haga clic aqui</a>	';
 				
@@ -75,8 +76,8 @@ if($suscripcion != 0)
 				$tpl2->assign("admin", ADMINISTRADOR);		
 				$tpl2->assign("info", INFO);				
 				$tpl2->assign("footer", FOOTER_CORREO);		
-
-				$respuesta = enviar_correo_web(ADMINISTRADOR, CORREO_ADMIN, $sender_name, $sender_email, $sender_subject, $tpl2->getOutputContent(), $image);
+				$output = $tpl2->fetch(URL_ROOT."librerias/mod_contactenos/template/contacto_usuario_suscripcion.tpl");
+				$respuesta = enviar_correo_web(ADMINISTRADOR, CORREO_ADMIN, $sender_name, $sender_email, $sender_subject, $output, $image);
 
 				$datos_contactenos->insertar_correo("boletin", $sender_name, $sender_email, "", "", "" , "");
 

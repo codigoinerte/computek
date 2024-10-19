@@ -13,7 +13,7 @@
           <TR>
             <TD align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:14px; padding:10px 10px 10px 10px; background-color:#FFF"><br />
               <p><strong> {$admin}</strong></p>
-              <p>Se siguiente usuario se suscribio:</p>
+              <p>El siguiente usuario se suscribio:</p>
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Arial,Helvetica,sans-serif; font-size:14px; background-color:#FFF">
                 <tr>
                   <td align="left"><strong>Correo</strong></td>
@@ -23,8 +23,8 @@
               </table>
               <p><br />
                 <strong>{$tienda}</strong><br />
-                <span style="color:#F60">{$tienda}</span> </p>
-              <p>{$tienda}</p></TD>
+                <span style="color:#F60">{$slogan}</span> </p>
+              <p>{$info}</p></TD>
           </TR>
           <TR>
             <TD height="30" align="center"  style="font-size:11px; color:#999; font-family:Arial, Helvetica, sans-serif; background-color:#FFF" >{$footer}</TD>

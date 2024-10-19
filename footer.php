@@ -73,9 +73,8 @@
           if($respuesta > 0)
           {
             ?>
-              <div class="alert alert-info alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <strong><?php echo $mensaje; ?></strong>
+              <div class="alert alert-info alert-dismissible bg-default-400 text-white p-2 rounded-l-lg rounded-r-lg" role="alert">
+                <strong><?php echo $mensaje; ?></strong>
               </div>
               <?php
           }
@@ -83,16 +82,9 @@
 
           <form class="flex w-full max-w-[590px]" action="<?php echo URL_WEB."librerias/mod_contactenos/parse.suscripcion.php"?>" method="post">
             <div class="relative w-full">
-              <input
-                type="text"
-                id="your-id"
-                class="peer block w-full appearance-none rounded-l-lg border-0 bg-white px-2.5 pb-2.5 pt-5 text-sm text-default-500 focus:outline-none focus:ring-0"
-                placeholder=" " />
-              <label
-                for="your-id"
-                class="z-1 pointer-events-none absolute left-2.5 top-4 origin-[0] -translate-y-4 scale-75 transform text-sm text-default-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-primary-500">
-                Email
-              </label>
+              <input type="text" name="email" class="peer block w-full appearance-none rounded-l-lg border-0 bg-white px-2.5 pb-2.5 pt-5 text-sm text-default-500 focus:outline-none focus:ring-0" placeholder=" " />
+              <input type="hidden" name="suscripcion" value="1"> 
+              <label for="your-id" class="z-1 pointer-events-none absolute left-2.5 top-4 origin-[0] -translate-y-4 scale-75 transform text-sm text-default-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-primary-500"> Email</label>
             </div>
             <button
               class="rounded-r-lg bg-white p-[9px] text-default-600 transition-all duration-300 hover:text-primary-500"

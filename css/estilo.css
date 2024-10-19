@@ -78,3 +78,8 @@ address{
     border-radius: 0.5rem;
     display: block;
 }
+@media(max-width:500px){
+    .whatsapp{
+        display: none;
+    }
+}
