@@ -48,35 +48,67 @@
 		<div class="toolbar">	
 			<div class="row">
 				<div class="col-xs-12">
-			<?php 
-			if($numeroRegistros > 9):
-				$_alias_registro = $_alias."_";
-				echo '<nav aria-label="Page navigation">';
-				echo '<div class="pager"><div class="pages"><ul class="pagination ">';
-				if($pagina>1) 
-				{ 
-				   echo '<li><a href="'.URL_WEB.$_alias_registro.($pagina-1).'" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
-				} 
-				for($i=$inicio;$i<=$final;$i++) 
-				{ 
-				   if($i==$pagina) 
-				   { 
-					  echo '<li class="active"><a href="#">'.$i.'<span class="sr-only">(current)</span></a></li>';
-				   }
-				   else
-				   { 
-					  echo '<li><a href="'.URL_WEB.$_alias_registro.$i.'">'.$i.'</a></li>';
-				   } 
-				} 
-				if($pagina<$numPags) 
-				{ 
-				   echo '<li><a href="'.URL_WEB.$_alias_registro.($pagina+1).'" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
-				} 
-				echo '</ul></div></div>';
-				echo '</nav>';
-			endif;   
-			?>
-			</div>	
+					<?php 
+					if($numeroRegistros > 9):
+						$_alias_registro = $_alias."_";						
+						echo '<div class="my-8 flex items-center justify-between"><ul class="flex items-center">';
+						if($pagina>1) 
+						{ 					
+							echo '<li class="px-3 py-2 text-gray-400">
+									<a href="'.URL_WEB.$_alias_registro.($pagina-1).'" aria-label="Previous">
+										<svg
+											class="h-5 w-5"
+											stroke="currentColor"
+											fill="none"
+											stroke-width="2"
+											viewBox="0 0 24 24"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											height="200px"
+											width="200px"
+											xmlns="http://www.w3.org/2000/svg">
+											<line x1="19" y1="12" x2="5" y2="12"></line>
+											<polyline points="12 19 5 12 12 5"></polyline>
+										</svg>
+									</a>
+								</li>';
+						} 
+						for($i=$inicio;$i<=$final;$i++) 
+						{ 
+							if($i==$pagina) 
+							{ 
+								echo '<li class="cursor-pointer rounded-lg bg-primary-500 px-3 py-2 text-white">'.$i.'</li>';
+							}
+							else
+							{ 
+								echo '<li class="cursor-pointer rounded-lg px-3 py-2"><a href="'.URL_WEB.$_alias_registro.$i.'">'.$i.'</a></li>';
+							} 
+						} 
+						if($pagina<$numPags) 
+						{ 
+							echo '<li class="cursor-pointer rounded-lg px-3 py-2 text-primary-500">
+									<a href="'.URL_WEB.$_alias_registro.($pagina+1).'" aria-label="Next">
+										<svg
+											class="h-5 w-5"
+											stroke="currentColor"
+											fill="none"
+											stroke-width="2"
+											viewBox="0 0 24 24"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											height="200px"
+											width="200px"
+											xmlns="http://www.w3.org/2000/svg">
+											<line x1="5" y1="12" x2="19" y2="12"></line>
+											<polyline points="12 5 19 12 12 19"></polyline>
+										</svg>
+									</a>
+								</li>';
+						} 
+						echo '</ul></div>';			
+					endif;   
+					?>
+				</div>	
 			</div>
 		</div>	
         <?php

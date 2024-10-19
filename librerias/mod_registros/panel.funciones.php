@@ -341,22 +341,15 @@ function listado_item_producto($item, $tipo = 1)
 	$item_imagen = isset($item["imagen_principal"])?$item["imagen_principal"]:'';
 	$item_imagen_destacada = isset($item["imagen_destacada"])?$item["imagen_destacada"]:'';
 	
-	if($item_imagen_destacada=='')
+	if($item_imagen_destacada=='' && ( $item_imagen!=='' && file_exists(URL_ROOT."images/media/th/".$item_imagen) ))
 	{
-		if($item_imagen!=='' && file_exists(URL_ROOT."images/media/th/".$item_imagen))
-		{
-			$item_imagen_destacada=URL_WEB."images/media/th/".$item_imagen;	
-		}
-		else
-		{
-			$item_imagen_destacada=URL_WEB."images/media/".$item_imagen;	
-		}
-		
-		
+		$item_imagen_destacada=URL_WEB."images/media/th/".$item_imagen;
 	}
-	else
+	else if($item_imagen_destacada!='' && file_exists(URL_ROOT."images/media/th/".$item_imagen_destacada))
 	{
 		$item_imagen_destacada=URL_WEB."images/media/th/".$item_imagen_destacada;
+	}else{
+		$item_imagen_destacada=URL_WEB."images/no-image.png";
 	}
 	
 	$item_idtipo = isset($item["idtipo"])?URL_WEB.$item["idtipo"]:0;

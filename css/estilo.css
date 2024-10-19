@@ -65,3 +65,16 @@ address{
 .font-sm{
     font-size:12px;
 }
+.terminos_de_busqueda{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.terminos_de_busqueda li a{
+    background-color: #00afef;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: block;
+}
