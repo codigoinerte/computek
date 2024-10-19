@@ -17,31 +17,31 @@ if($_info!='')
 	if($_info==1)
 	{
 		$mensaje='Su mensaje fue enviado satisfactoriamente, gracias por contactarte con nosotros';
-		$class='alert-success';
+		$class='bg-green-500';
 		$icono='<i class="fa fa-check fa-lg" aria-hidden="true"></i>';
 	}
 	elseif($_info==2)
 	{
 		$mensaje='Debe completar todos los campos requeridos para poder registrarse';
-		$class='alert-danger';
+		$class='bg-red-500';
 		$icono='<i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>';
 	}
 	elseif($_info==3)
 	{
 		$mensaje='Por favor, revise el campo de captcha';
-		$class='alert-danger';
+		$class='bg-red-500';
 		$icono='<i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>';
 	}
 	elseif($_info==4)
 	{
 		$mensaje='Ah ocurrido un error vuelva a intentarlo mas tarde';
-		$class='alert-danger';
+		$class='bg-red-500';
 		$icono='<i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>';
 	}	
 	else
 	{
 		$mensaje='Verifique los campos ingresados y vuelva a intentarlo';
-		$class='alert-danger';
+		$class='bg-red-500';
 		$icono='<i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>';
 	}
 }
@@ -70,8 +70,7 @@ if($_info!='')
         if($_info!='')
         {
           ?>
-            <div class="alert <?php echo $class; ?> alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="alert <?php echo $class; ?> alert-dismissible p-2 rounded-l-lg rounded-r-lg text-white" role="alert">            
               <strong><?php echo $mensaje; ?></strong>
             </div>
           <?php
@@ -143,7 +142,7 @@ if($_info!='')
             </div>
             <div class="col-span-4">
               <select class="h-[50px] w-full rounded-lg border-transparent shadow focus:border-transparent focus:ring-0 sm:col-span-1" id="select-state" name="<?php echo $campo_asunto; ?>">
-                <option value="Solicitar coitzación">Solicitar cotizaci&oacute;n</option>
+                <option value="Solicitar coitzaci&oacute;n">Solicitar cotizaci&oacute;n</option>
                 <option value="Consulta">Consulta</option>
               </select>
             </div>

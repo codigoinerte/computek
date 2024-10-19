@@ -1,4 +1,6 @@
 <?php
+use Smarty\Smarty;
+
 require "../../admin/funciones/conecta.general.php";
 include URL_ROOT."librerias/mod_contactenos/clases/class.contactenos.php";
 include URL_ROOT."librerias/mod_seo/clases/class.seo.php";
@@ -47,13 +49,12 @@ if($sender_name != NULL && $sender_telephone != NULL && $sender_email != NULL &&
 		
 		if($sender_asunto!='')
 		{
-			$sender_subject=$sender_asunto;
+			$sender_subject=utf8_decode($sender_asunto);
 		}
 		///////////////////////////////////////////////
 		/// ENVIAR  A ADMINISTRADOR DATOS DE USUARIO
 		////////////////////////////////////////////// 
-		$tpl = new TemplatePower(URL_ROOT."librerias/mod_contactenos/template/contacto_admin.tpl");
-		$tpl->prepare();
+		$tpl = new Smarty();		
 		$tpl->assign("empresa", $sender_company);
 		$tpl->assign("mensaje", $sender_message);
 		$tpl->assign("name", $sender_name);
@@ -65,24 +66,25 @@ if($sender_name != NULL && $sender_telephone != NULL && $sender_email != NULL &&
 		$tpl->assign("slogan", SLOGAN);
 		$tpl->assign("admin", ADMINISTRADOR);		
 		$tpl->assign("info", INFO);				
-		$tpl->assign("footer", FOOTER_CORREO);				
-		
-		$respuesta1 = enviar_correo_web(ADMINISTRADOR, CORREO_ADMIN, ADMINISTRADOR, $correo_empresa, $sender_subject, $tpl->getOutputContent(), $image);		
+		$tpl->assign("footer", FOOTER_CORREO);
+		$output = $tpl->fetch(URL_ROOT."librerias/mod_contactenos/template/contacto_admin.tpl");		
+		$respuesta1 = enviar_correo_web(ADMINISTRADOR, CORREO_ADMIN, ADMINISTRADOR, $correo_empresa, $sender_subject, $output, $image);		
 
 		///////////////////////////////////////////////
 		/// ENVIAR  A USUARIO MENSAJE DEL ADMINISTRADOR
 		////////////////////////////////////////////// 
+		
 		$sender_subject = $sender_name." hemos recibido su solicitud.";
-		$tpl2 = new TemplatePower(URL_ROOT."librerias/mod_contactenos/template/contacto_usuario.tpl" );
-		$tpl2->prepare();
+		$tpl2 = new Smarty();
 		$tpl2->assign("name", $sender_name);
 		$tpl2->assign("tienda", NOMBRE_TIENDA);
 		$tpl2->assign("slogan", SLOGAN);
 		$tpl2->assign("admin", ADMINISTRADOR);		
 		$tpl2->assign("info", INFO);				
-		$tpl2->assign("footer", FOOTER_CORREO);		
-		
-		$respuesta = enviar_correo_web(ADMINISTRADOR, CORREO_ADMIN, $sender_name, $sender_email, $sender_subject, $tpl2->getOutputContent(), $image);
+		$tpl2->assign("footer", FOOTER_CORREO);
+		$output = $tpl2->fetch(URL_ROOT."librerias/mod_contactenos/template/contacto_usuario.tpl");
+
+		$respuesta = enviar_correo_web(ADMINISTRADOR, CORREO_ADMIN, $sender_name, $sender_email, $sender_subject, "$output", $image);
 	
 		$datos_contactenos->insertar_correo("correo", $sender_name, $sender_email, $sender_company, $sender_telephone, $sender_asunto , $sender_message);
 	
@@ -106,7 +108,4 @@ if($ruta!=='')
 {
 	 header("Location:$ruta");
 }
-
-//print_r($_POST);
-
 ?>

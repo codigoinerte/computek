@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <body style="background-color:#DEDEDE">
 <div align="center">
@@ -12,19 +13,19 @@
           </TR>
           <TR>
             <TD align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:14px; padding:10px 10px 10px 10px; background-color:#FFF"><br />
-              <p><strong>Estimado(a) {name}</strong></p>
+              <p><strong>Estimado(a) {$name}</strong></p>
               <p>Hemos recibido su solicitud y estaremos respondiendo en el transcurso del d&iacute;a.</p>
               <p>&nbsp;</p>
               <p>&nbsp;</p>
               <p>&nbsp;</p>
               <p><br />
-                <strong>{tienda}</strong><br />
-                <span style="color:#663">{slogan}</span> </p>
-              <p>{info}</p>
+                <strong>{$tienda}</strong><br />
+                <span style="color:#663">{$slogan}</span> </p>
+              <p>{$info}</p>
             <br></TD>
           </TR>
           <TR>
-            <TD height="30" align="center"  style="font-size:11px; color:#999; font-family:Arial, Helvetica, sans-serif; background-color:#FFF" >{footer}</TD>
+            <TD height="30" align="center"  style="font-size:11px; color:#999; font-family:Arial, Helvetica, sans-serif; background-color:#FFF" >{$footer}</TD>
           </TR>
         </TABLE></td>
     </tr>

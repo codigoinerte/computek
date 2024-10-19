@@ -15,19 +15,19 @@
               <p><strong>Estimado(a)</strong></p>
               <p>Hemos registrado exitosamente su suscripci&oacute;n.</p>
 			  <p>
-				 {link_desuscripcion}
+				 {$link_desuscripcion}
 			  </p>	
               <p>&nbsp;</p>
               <p>&nbsp;</p>
               <p>&nbsp;</p>
               <p><br />
-                <strong>{tienda}</strong><br />
-                <span style="color:#663">{slogan}</span> </p>
-              <p>{info}</p>
+                <strong>{$tienda}</strong><br />
+                <span style="color:#663">{$slogan}</span> </p>
+              <p>{$info}</p>
             <br></TD>
           </TR>
           <TR>
-            <TD height="30" align="center"  style="font-size:11px; color:#999; font-family:Arial, Helvetica, sans-serif; background-color:#FFF" >{footer}</TD>
+            <TD height="30" align="center"  style="font-size:11px; color:#999; font-family:Arial, Helvetica, sans-serif; background-color:#FFF" >{$footer}</TD>
           </TR>
         </TABLE></td>
     </tr>

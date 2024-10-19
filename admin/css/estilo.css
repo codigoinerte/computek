@@ -112,11 +112,15 @@ form select
 	width: 100%;
 	padding: 3px 0px 3px 0px;
 }
+#header .navbar-brand{
+	display:block;
+	padding:0px 1rem;
+}
 #header .navbar-brand img
 {
 	height: auto;
 	max-height: 50px !important;
-	
+	max-width: 100%;	
 }
 .avatar .bg-cover
 {

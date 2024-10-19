@@ -36,11 +36,13 @@ define("URL_WEB",$url_web);
 define("URL_AMIGABLE",true);
 
 $fecha_ahora= date("Y-m-d"); 
+require URL_ROOT.'vendor/autoload.php';
+
 include URL_ROOT_ADMIN."/clases/class.conecta.php";
 include URL_ROOT_ADMIN."/clases/class.definition.php";
-include URL_ROOT_ADMIN."/clases/class.TemplatePower.inc.php";
-include URL_ROOT_ADMIN."/clases/class.phpmailer.php";
-include URL_ROOT_ADMIN."/clases/class.smtp.php";
+//include URL_ROOT_ADMIN."/clases/class.TemplatePower.inc.php";
+//include URL_ROOT_ADMIN."/clases/class.phpmailer.php";
+//include URL_ROOT_ADMIN."/clases/class.smtp.php";
 
 $datos_definition = new definition();
 include ("funciones.general.php");

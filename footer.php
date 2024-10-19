@@ -406,7 +406,7 @@
           </button>
         </div>
         <a href="#" class="mr-auto flex items-center gap-2 p-5 lg:mr-0">
-          <img class="h-7" src="./images/logo.png" alt="logo" />          
+          <img class="h-7" src="<?php echo URL_WEB; ?>images/logo.png" alt="logo" />          
         </a>
         <div class="overflow-y-auto p-5">
           <?php

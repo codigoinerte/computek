@@ -1,4 +1,7 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 function url_amigable($url)
 {
 	if(URL_AMIGABLE == "true")
