@@ -1,3 +1,7 @@
 _*
 admin/cache/*
 /vendor/
+*.zip
+.vscode
+.vscode/*
+templates_c/
