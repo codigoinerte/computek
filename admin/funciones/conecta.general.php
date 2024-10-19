@@ -1,11 +1,11 @@
 <?php
 #error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 #ob_start('ob_gzhandler');
-
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+*/
 ini_set('memory_limit', '-1');
 ini_set('date.timezone', 'America/LIma');
 header('Content-Type: text/html; charset=UTF-8');

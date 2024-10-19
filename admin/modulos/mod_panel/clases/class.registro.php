@@ -188,7 +188,7 @@ class registro
 		$lista = $this->data->executeQuery($query, array("$id"));
 		return $lista;
 	}
-	public function insertar_registro($nombre, $url="", $imagen, $resumen="", $descripcion="", $orden=0, $idtipo, $idestado=1, $idusuario=0, $iddestacado=0, $fecha_creacion= "0000-00-00", $fecha_modificacion= "0000-00-00")
+	public function insertar_registro($nombre, $url="", $imagen = "", $resumen="", $descripcion="", $orden=0, $idtipo = 0, $idestado=1, $idusuario=0, $iddestacado=0, $fecha_creacion= "0000-00-00", $fecha_modificacion= "0000-00-00")
 	{
 		$query="INSERT INTO mod_panel_registro( nombre, url, imagen, resumen, descripcion, orden, idtipo, idestado, idusuario, iddestacado, fecha_creacion, fecha_modificacion)
 				VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";

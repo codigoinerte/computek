@@ -204,7 +204,7 @@ class registros_home
 		return $lista;
 	}
 	
-	public function listar_registros_destacadosxpadre($idtipo, $limite=0, $idpadre)
+	public function listar_registros_destacadosxpadre($idtipo, $limite=0, $idpadre=0)
 	{
 		$lista="";
 		$query="SELECT mar.id, mar.nombre, mar.url, mar.imagen, mar.resumen, mar.descripcion, mar.orden, mar.idtipo, mar.idestado, mar.iddestacado, mar.fecha_creacion,

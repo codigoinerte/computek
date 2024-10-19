@@ -472,6 +472,31 @@ function uniqidReal($lenght = 13) {
     }
     return substr(bin2hex($bytes), 0, $lenght);
 }
+function formatearFechaEnEspanol($fecha, $incluirHora = false) {
+    // Arrays de traducción
+    $dias = ['Sunday' => 'domingo', 'Monday' => 'lunes', 'Tuesday' => 'martes', 'Wednesday' => 'miércoles', 'Thursday' => 'jueves', 'Friday' => 'viernes', 'Saturday' => 'sábado'];
+    $meses = ['January' => 'enero', 'February' => 'febrero', 'March' => 'marzo', 'April' => 'abril', 'May' => 'mayo', 'June' => 'junio', 'July' => 'julio', 'August' => 'agosto', 'September' => 'septiembre', 'October' => 'octubre', 'November' => 'noviembre', 'December' => 'diciembre'];
+
+    // Crear objeto DateTime a partir de la fecha proporcionada
+    $fechaObj = new DateTime($fecha);
+
+    // Obtener componentes de la fecha
+    $dia_semana = $dias[$fechaObj->format('l')];
+    $dia = $fechaObj->format('d');
+    $mes = $meses[$fechaObj->format('F')];
+    $anio = $fechaObj->format('Y');
+
+    // Formatear fecha sin hora
+    $fecha_formateada = "$dia_semana, $dia de $mes de $anio";
+
+    // Si se debe incluir la hora
+    if ($incluirHora) {
+        $hora = $fechaObj->format('g:i:s A'); // Formato de 12 horas con AM/PM
+        $fecha_formateada .= " $hora";
+    }
+
+    return $fecha_formateada;
+}
 function fecha_castellano ($fecha='')
 {
 	//Establecer la información del localismo.
@@ -479,7 +504,7 @@ function fecha_castellano ($fecha='')
 	$fecha_castellano = "";
 	if($fecha!=='' || $fecha!=='0000-00-00')
 	{	#setlocale(LC_ALL, 'es_PE'); 
-		$fecha_castellano = (strftime("%A, %d de %B de %Y", strtotime($fecha)));
+		$fecha_castellano = formatearFechaEnEspanol($fecha);
 	}
 	return $fecha_castellano;
 }
@@ -490,12 +515,12 @@ function fecha_castellano_completa ($fecha='')
 	$fecha_castellano = "";
 	if($fecha!=='' || $fecha!=='0000-00-00')
 	{	#setlocale(LC_ALL, 'es_PE'); 
-		$fecha_castellano = (strftime("%A, %d de %B de %Y %r", strtotime($fecha)));
+		$fecha_castellano = formatearFechaEnEspanol($fecha, true);
 	}
 	return $fecha_castellano;
 }
 
-function upload_files($size_imagen, $array_files = array(), $ruta, $idpadre, $tipo=0)
+function upload_files($size_imagen, $array_files = [], $ruta = "", $idpadre = 0, $tipo=0)
 {	
 	$datos_registro = new registro();
 	$datos_general= new config_general();
@@ -507,6 +532,8 @@ function upload_files($size_imagen, $array_files = array(), $ruta, $idpadre, $ti
 	$item_calidad = isset($detalle_imagen[0]["calidad"])?$detalle_imagen[0]["calidad"]:5;
 	$item_cuadrado = isset($detalle_imagen[0]["cuadrado"])?$detalle_imagen[0]["cuadrado"]:0;
 	$item_ratio = isset($detalle_imagen[0]["ratio"])?$detalle_imagen[0]["ratio"]:0;
+
+	if(count($array_files) == 0 || $ruta == "") return;
 	
 	$_SESSION['error_imagen'] = array();
 	$array_error=array();
@@ -537,6 +564,7 @@ function upload_files($size_imagen, $array_files = array(), $ruta, $idpadre, $ti
 							$id_imagen = isset($array_imagen[0]["id"])?$array_imagen[0]["id"]:0;
 							if($id_imagen!==0)
 							{
+								if($idpadre > 0)
 								$datos_registro->insertar_relacion($idpadre,$id_imagen);
 							}
 							###################################################################
@@ -565,6 +593,7 @@ function upload_files($size_imagen, $array_files = array(), $ruta, $idpadre, $ti
 						}
 						else
 						{
+							if($idpadre > 0)
 							$datos_registro->actualizar_imagen($idpadre,$newfilename);
 						}
 
@@ -594,7 +623,7 @@ function upload_files($size_imagen, $array_files = array(), $ruta, $idpadre, $ti
 	}
 }
 
-function upload_files_slider($size_imagen, $array_files = array(), $ruta, $idpadre, $tipo=0)
+function upload_files_slider($size_imagen, $array_files = [], $ruta = "", $idpadre = 0, $tipo=0)
 {	
 	$datos_registro = new registro();
 	$datos_general= new config_general();
@@ -606,6 +635,8 @@ function upload_files_slider($size_imagen, $array_files = array(), $ruta, $idpad
 	$item_calidad = isset($detalle_imagen[0]["calidad"])?$detalle_imagen[0]["calidad"]:5;
 	$item_cuadrado = isset($detalle_imagen[0]["cuadrado"])?$detalle_imagen[0]["cuadrado"]:0;
 	$item_ratio = isset($detalle_imagen[0]["ratio"])?$detalle_imagen[0]["ratio"]:0;
+
+	if(count($array_files) == 0 || $ruta == "") return;	
 			
 	$_SESSION['error_imagen'] = array();
 	$array_error=array();
@@ -634,6 +665,7 @@ function upload_files_slider($size_imagen, $array_files = array(), $ruta, $idpad
 						$id_imagen = isset($array_imagen[0]["id"])?$array_imagen[0]["id"]:0;
 						if($id_imagen!==0)
 						{
+							if($idpadre > 0)
 							$datos_registro->insertar_relacion($idpadre,$id_imagen);
 						}
 						###################################################################
@@ -681,8 +713,8 @@ function upload_files_slider($size_imagen, $array_files = array(), $ruta, $idpad
 	}
 }
 
-function imagen_seo_box($imagen='', $item_id, $ruta_eliminar)
-{	
+function imagen_seo_box($imagen='', $item_id = 0, $ruta_eliminar = "")
+{	if($item_id == 0 || $ruta_eliminar == "") return;
 	if($imagen!=='' && file_exists(URL_ROOT."images/media/".$imagen) && isset($imagen))
 	{
 		$imagen = URL_WEB."images/media/$imagen";
@@ -703,7 +735,7 @@ function imagen_seo_box($imagen='', $item_id, $ruta_eliminar)
 	<?php
 	}
 }
-function listado_registro_galeria($array=array(), $ruta, $ruta_admin, $ruta_eliminar)	
+function listado_registro_galeria($array=[], $ruta = "", $ruta_admin = "", $ruta_eliminar = "")
 {
 	if(count($array) > 0)
 	{

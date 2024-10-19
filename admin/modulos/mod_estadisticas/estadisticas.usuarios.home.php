@@ -115,7 +115,8 @@ for($d=1;$d<=12;$d++)
 
 	$data_weeks.="'".$cantidad."',";
 
-	$data_row_week = ucfirst(strftime("%a %e/%b/%y", strtotime("$anio1-$mes1-$dia1")));
+	$fecha = DateTime::createFromFormat('Y-m-d', "$anio1-$mes1-$dia1");
+	$data_row_week = ucfirst($fecha->format('D j/M/y'));
 
 	#$weks.="'".$dia1."/".$mes1."/".$anio1."',";	
 	$weks.="'$data_row_week',";	
