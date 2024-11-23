@@ -11,7 +11,7 @@
 	$nombre_registro = isset($datos_registro[0]["nombre"])?$datos_registro[0]["nombre"]:'';
 	
 	?>
-	<nav class="container mx-auto my-10 flex flex-wrap items-center gap-2 px-4 sm:px-8 xl:px-4">
+	<nav class="container mx-auto my-10 flex flex-wrap items-center gap-2 px-4 sm:px-8 xl:px-4 breadcrumb">
 		<div class="flex items-center gap-2">
 			<a href="<?php echo URL_WEB; ?>">
 			<svg class="h-5 w-5 text-primary-500" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg">
