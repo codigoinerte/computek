@@ -535,10 +535,10 @@
       </svg>
     </div>
 
-    <script src="<?php echo URL_WEB; ?>lib/simpleParallax/simpleParallax.min.js"></script>
-    <script src="<?php echo URL_WEB; ?>lib/rater-js/rater-js.js"></script>
-    <script src="<?php echo URL_WEB; ?>lib/swiper/swiper-bundle.min.js"></script>
-    <script src="<?php echo URL_WEB; ?>lib/metisMenu/metismenujs.min.js"></script>
-    <script src="<?php echo URL_WEB; ?>js/main.js"></script>
+    <script src="<?php echo URL_WEB; ?>lib/simpleParallax/simpleParallax.min.js?v=<?php echo $version; ?>"></script>
+    <script src="<?php echo URL_WEB; ?>lib/rater-js/rater-js.js?v=<?php echo $version; ?>"></script>
+    <script src="<?php echo URL_WEB; ?>lib/swiper/swiper-bundle.min.js?v=<?php echo $version; ?>"></script>
+    <script src="<?php echo URL_WEB; ?>lib/metisMenu/metismenujs.min.js?v=<?php echo $version; ?>"></script>
+    <script src="<?php echo URL_WEB; ?>js/main.js?v=<?php echo $version; ?>"></script>
   </body>
 </html>

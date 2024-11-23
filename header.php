@@ -9,11 +9,11 @@
     <?php  include "librerias/mod_seo/seo.php" ;  ?>
     <!-- CSS Style --->
 
-    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/rater-js/rater-js.css" />
-    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/metisMenu/metismenujs.min.css" />
-    <link rel="stylesheet" href="<?php echo URL_WEB; ?>css/styles.css" />
-    <link rel="stylesheet" href="<?php echo URL_WEB; ?>css/estilo.css" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/rater-js/rater-js.css?v=<?php echo $version; ?>" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/swiper/swiper-bundle.min.css?v=<?php echo $version; ?>" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>lib/metisMenu/metismenujs.min.css?v=<?php echo $version; ?>" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>css/styles.css?v=<?php echo $version; ?>" />
+    <link rel="stylesheet" href="<?php echo URL_WEB; ?>css/estilo.css?v=<?php echo $version; ?>" />
     
   </head>
   <body
