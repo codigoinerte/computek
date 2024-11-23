@@ -17,7 +17,7 @@
 	ob_start("sanitizeOutput");
 	#
 	$array_reservado = array("registrar","carrito","ingresar","activacion","libro-de-reclamaciones","contactenos","mas-vendidos", "compras");
-
+	$version = "0.0.1";
 	if($_alias =='carrito' && $id_session_empresa_iniciada==0)
 	{
 		header('location: '.URL_WEB.'registrar');
