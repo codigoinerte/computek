@@ -217,6 +217,66 @@ class registros_home
 		return $lista;
 	}
 
+	#LISTAR REGISTROS especiales
+	public function contar_especiales($tipo)
+	{
+		$query_especial = "";
+		if($tipo == 1){
+			$query_especial = " AND mar.idoficina = 1 ";
+		}else if($tipo == 2){
+			$query_especial = " AND mar.idgamer = 1 ";
+		}else if($tipo == 3){
+			$query_especial = " AND mar.idproductividad = 1 ";
+		}
+		 
+		$lista="";
+		$query="SELECT count(*)
+				FROM mod_panel_registro mar
+				LEFT JOIN mod_panel_registro_relacion mrr ON mrr.id2 = mar.id
+				LEFT JOIN mod_com_alias mca ON mca.id_registro = mar.id
+				LEFT JOIN mod_panel_registro_precio marp ON marp.idprincipal = mar.id				
+				LEFT JOIN mod_panel_registro_marca mrm ON mrm.id = marp.idmarca
+				LEFT JOIN mod_panel_registro_producto_estado mre ON mre.id = marp.estado_producto
+				WHERE mar.idtipo = ? AND mar.idestado=1 $query_especial
+				ORDER BY fecha_creacion ASC, mar.orden ASC ";
+		$lista = $this->data->executeQuery($query, array("3"));
+		return $lista;
+	}
+
+	public function listar_especiales($tipo, $limitInf,$tamPag)
+	{
+		$query_especial = "";
+		if($tipo == 1){
+			$query_especial = " AND mar.idoficina = 1 ";
+		}else if($tipo == 2){
+			$query_especial = " AND mar.idgamer = 1 ";
+		}else if($tipo == 3){
+			$query_especial = " AND mar.idproductividad = 1 ";
+		}
+
+		$lista="";
+		$query="SELECT mar.id, mar.nombre, mar.url, mar.imagen, mar.resumen, mar.descripcion, mar.orden, mar.idtipo, mar.idestado, mar.iddestacado, mar.fecha_creacion,
+				marp.precio, marp.descuento, marp.idmoneda, mca.alias, marp.stock, mrm.marca, mre.estado, 
+				(
+					SELECT mar1.imagen
+					FROM mod_panel_registro mar1
+					LEFT JOIN mod_panel_registro_relacion mrr1 ON mrr1.id2 = mar1.id
+					WHERE mrr1.id1 = mar.id AND mar1.idtipo = 4 AND mar.iddestacado=1
+					LIMIT 0,1
+				) as imagen_principal
+				FROM mod_panel_registro mar
+				LEFT JOIN mod_panel_registro_relacion mrr ON mrr.id2 = mar.id
+				LEFT JOIN mod_com_alias mca ON mca.id_registro = mar.id
+				LEFT JOIN mod_panel_registro_precio marp ON marp.idprincipal = mar.id				
+				LEFT JOIN mod_panel_registro_marca mrm ON mrm.id = marp.idmarca
+				LEFT JOIN mod_panel_registro_producto_estado mre ON mre.id = marp.estado_producto
+				WHERE mar.idtipo = ? AND mar.idestado=1 $query_especial
+				ORDER BY fecha_creacion ASC, mar.orden ASC 
+				LIMIT $limitInf,$tamPag  ;";				
+		$lista = $this->data->executeQuery($query, array("3"));
+		return $lista;
+	}
+
 	public function listar_registros_destacados($idtipo, $limite=0)
 	{
 		$lista="";
