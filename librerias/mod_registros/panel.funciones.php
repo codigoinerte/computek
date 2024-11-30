@@ -119,6 +119,15 @@ function mostrar_modulo_web($id, $tipo=0)
 							</p>
 						</div>
 						</div>';
+		}else if($tipo == 7){
+			$var.=' <div class="swiper-slide text-center item-usos" style="background: url('.$imagen.')">
+						<a class="inline-block font-semibold text-white" href="'. $url .'">
+						<h3>'.$nombre.'</h3>
+						'. $descripcion .'
+						<div class="flex-1"></div>
+						<span class="btn">Ver productos</span>
+						</a>
+					</div>';
 		}
 		/*
 		else if($tipo==2)

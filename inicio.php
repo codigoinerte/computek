@@ -41,7 +41,7 @@
         <div class="col-span-12 sm:col-span-6 lg:col-span-3">
           <a
             class="group relative flex items-center gap-5 py-5 after:absolute after:right-[50px] after:hidden after:h-8 after:w-[2px] after:bg-slate-200 after:content-[''] lg:p-0 xl:after:block"
-            href="#">
+            href="promociones">
             <svg
               class="h-12 w-12 text-default-600 transition-all duration-300 group-hover:-translate-y-4 group-hover:text-primary-500"
               stroke="currentColor"
@@ -140,6 +140,28 @@
         </div>
       </div>
     </section>
+
+    <div
+      class="relative w-full overflow-hidden after:absolute after:inset-0 after:z-[2] after:h-full after:w-full after:bg-black/50">
+      <div
+        class="container absolute inset-0 z-[4] mx-auto my-10 px-4 sm:px-8 xl:px-4">
+        <div class="flex h-full items-center">
+          <div
+            class="swiper swiper-categories group relative flex w-full items-center">
+            <div class="swiper-wrapper select-none py-12 justify-center gap-5">
+              <?php echo mostrar_modulo_web(662, 7); ?>
+              <?php echo mostrar_modulo_web(664, 7); ?>
+              <?php echo mostrar_modulo_web(667, 7); ?>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+      <img
+        class="parallax h-full max-h-[410px] w-full object-cover"
+        src="/images/banner-5.png"
+        alt="img" />
+    </div>
 
     <?php
         $listado_categorias = $datos_reg_home->listar_categoriasxpagina(2);
