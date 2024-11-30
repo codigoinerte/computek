@@ -88,6 +88,10 @@
             {
               $active2='active';
             }
+            else if($_alias=='promociones')
+            {
+              $active3='active';
+            }
             else if($_alias=='contactenos')
             {
               $active99='active';
@@ -134,11 +138,18 @@
 
             <li>
               <a
+                class="<?php echo $active3; ?> relative block py-3 transition-all duration-300 after:absolute after:-bottom-[5px] after:-top-[2px] after:left-0 after:h-[2px] after:w-0 after:bg-primary-500 after:transition-all after:duration-300 after:content-[''] hover:text-primary-500 hover:after:w-full"
+                href="<?php echo URL_WEB. "promociones"; ?>">
+                Promociones
+              </a>
+            </li>
+            <li>
+              <a
                 class="<?php echo $active99; ?> relative block py-3 transition-all duration-300 after:absolute after:-bottom-[5px] after:-top-[2px] after:left-0 after:h-[2px] after:w-0 after:bg-primary-500 after:transition-all after:duration-300 after:content-[''] hover:text-primary-500 hover:after:w-full"
                 href="<?php echo URL_WEB. "contactenos"; ?>">
                 Contactenos
               </a>
-            </li>            
+            </li>
           </ul>
         </nav>
       </div>

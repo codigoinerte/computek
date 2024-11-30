@@ -16,7 +16,7 @@
 	#if (substr_count($_SERVER["HTTP_ACCEPT_ENCODING"], 'gzip')) ob_start('ob_gzhandler');
 	ob_start("sanitizeOutput");
 	#
-	$array_reservado = array("registrar","carrito","ingresar","activacion","libro-de-reclamaciones","contactenos","mas-vendidos", "compras");
+	$array_reservado = array("registrar","carrito","ingresar","activacion","libro-de-reclamaciones","contactenos","promociones", "oficina", "gamer", "empresarial", "compras");
 	$version = "0.0.1";
 	if($_alias =='carrito' && $id_session_empresa_iniciada==0)
 	{
