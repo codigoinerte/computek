@@ -237,7 +237,12 @@ function layers($tipo=0, $nombre='', $name='', $tooltip='', $array_data=array(),
 				<input type="text" class="form-control" name="<?php echo $name ?>" id="<?php echo $name ?>" value='<?php echo $val_inpt; ?>' <?php echo ($onclick!=='')?$onclick:''; ?>>
 				<?php }else if($tipo==16){ ?>				  
 				<textarea name="<?php echo $name ?>" id="<?php echo $name ?>" class="form-control" cols="30" rows="10" <?php echo ($onclick!=='')?$onclick:''; ?>><?php echo $val_inpt; ?></textarea>
-				<?php } ?>  
+				<?php }else if($tipo==17){ ?>  
+				  <select name="<?php echo $name ?>" id="<?php echo $name ?>" class="form-control">
+					<option value="1" <?php echo($val_inpt==1)?'selected':''; ?>>si</option>							
+					<option value="0" <?php echo($val_inpt==0)?'selected':''; ?>>no</option>							
+				  </select>
+				<?php } ?>
 			  </div>
 		</div>
 		<div class="line line-dashed b-b line-lg pull-in"></div>

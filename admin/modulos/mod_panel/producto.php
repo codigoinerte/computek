@@ -42,6 +42,9 @@ if(count($listado_registro) == 0)
 	$item_idtipo = 0;
 	$item_idestado = 1;
 	$item_iddestacado = 0;
+	$item_idoficina = 0;
+	$item_idgamer = 0;
+	$item_idproductividad = 0;
 	$item_idpagina = 0;
 	
 	$item_idmoneda=1;
@@ -74,6 +77,9 @@ else
 	$item_idtipo = $listado_registro[0]["idtipo"];
 	$item_idestado = $listado_registro[0]["idestado"];
 	$item_iddestacado = $listado_registro[0]["iddestacado"];
+	$item_idoficina = $listado_registro[0]["idoficina"];
+	$item_idgamer = $listado_registro[0]["idgamer"];
+	$item_idproductividad = $listado_registro[0]["idproductividad"];
 	$item_idpagina = $listado_registro[0]["id_pagina"];
 	
 	$item_idmoneda=$listado_registro[0]["idmoneda"];
@@ -174,7 +180,11 @@ else if($get_action=='edit' or $get_action=='new')
 						layers(2, "Sub categoría", "subcategoria", "Seleccione la subcategoría", $array_subcategoria, $item_id_subcategoria); 
 						layers(1, "Orden", "orden", "Ingrese numero de orden de la categoria", "", $item_orden); 
 						layers(2, "Estado", "estado", "Seleccione el estado de la categoria", $array_menu_estado, $item_idestado); 
-						layers(13, "Destacado", "destacado", "Seleccione siel producto es destacado o no", "", $item_iddestacado); 
+						layers(13, "Destacado", "destacado", "Seleccione si el producto es destacado o no", "", $item_iddestacado); 
+						
+						layers(17, "Oficina", "oficina", "Seleccione si el producto es gamer o no", "", $item_idoficina); 
+						layers(17, "Gamer", "gamer", "Seleccione si el producto es gamer o no", "", $item_idgamer); 
+						layers(17, "Productividad", "productividad", "Seleccione si el producto es de productividad o no", "", $item_idproductividad); 
 
 						layers_hidden($get_id, $get_modulo, $get_option, $get_action, $get_token); 
 

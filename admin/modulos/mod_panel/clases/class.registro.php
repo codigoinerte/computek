@@ -9,7 +9,7 @@ class registro
 	public function registro_detalle($idregistro)
 	{
 		$lista="";
-		$query="SELECT mar.id, mar.nombre, mar.url, mar.imagen, mar.resumen, mar.descripcion, mar.idtipo, mar.idestado, mar.iddestacado, mar.orden,
+		$query="SELECT mar.id, mar.nombre, mar.url, mar.imagen, mar.resumen, mar.descripcion, mar.idtipo, mar.idestado, mar.iddestacado, mar.idoficina, mar.idgamer, mar.idproductividad, mar.orden,
 				ca.alias, ca.tipo_pagina, ca.id_pagina, cp.nombre as nombre_pagina, ru.usuario as usuario,
 				CONCAT(mep.nombres,' ',mep.apellidos) as nombre_personal, mar.fecha_creacion, mar.fecha_modificacion, mrp.precio, mrp.descuento, mrp.idmoneda,
 				mrp.stock, mrp.idmarca, mrp.estado_producto,
@@ -188,11 +188,11 @@ class registro
 		$lista = $this->data->executeQuery($query, array("$id"));
 		return $lista;
 	}
-	public function insertar_registro($nombre, $url="", $imagen = "", $resumen="", $descripcion="", $orden=0, $idtipo = 0, $idestado=1, $idusuario=0, $iddestacado=0, $fecha_creacion= "0000-00-00", $fecha_modificacion= "0000-00-00")
+	public function insertar_registro($nombre, $url="", $imagen = "", $resumen="", $descripcion="", $orden=0, $idtipo = 0, $idestado=1, $idusuario=0, $iddestacado=0, $fecha_creacion= "0000-00-00", $fecha_modificacion= "0000-00-00", $_idoficina=0, $_idgamer=0, $_idproductividad=0)
 	{
-		$query="INSERT INTO mod_panel_registro( nombre, url, imagen, resumen, descripcion, orden, idtipo, idestado, idusuario, iddestacado, fecha_creacion, fecha_modificacion)
-				VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-		$this->data->updateQuery($query,array("$nombre", "$url", "$imagen", "$resumen", "$descripcion", "$orden", "$idtipo", "$idestado", "$idusuario", "$iddestacado", "$fecha_creacion", "$fecha_modificacion"));
+		$query="INSERT INTO mod_panel_registro( nombre, url, imagen, resumen, descripcion, orden, idtipo, idestado, idusuario, iddestacado, idoficina, idgamer, idproductividad, fecha_creacion, fecha_modificacion)
+				VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$this->data->updateQuery($query,array("$nombre", "$url", "$imagen", "$resumen", "$descripcion", "$orden", "$idtipo", "$idestado", "$idusuario", "$iddestacado", "$_idoficina", "$_idgamer", "$_idproductividad", "$fecha_creacion", "$fecha_modificacion"));
 		
 		$lista="";
 		$query="SELECT MAX(id) as id FROM mod_panel_registro";
@@ -209,7 +209,7 @@ class registro
 		$query="INSERT INTO mod_com_alias(id_registro, id_pagina, alias, tipo_pagina) VALUES (?,?,?,?) ";
 		$this->data->updateQuery($query,array("$idregistro", "$idpagina", "$alias", "$tipo_pagina"));	
 	}
-	public function actualizar_registro($id, $nombre='', $url='',$imagen='',$resumen='',$descripcion='',$orden=0,$idestado=0,$iddestacado=0,$fecha_modificacion='0000-00-00')
+	public function actualizar_registro($id, $nombre='', $url='',$imagen='',$resumen='',$descripcion='',$orden=0,$idestado=0,$iddestacado=0,$fecha_modificacion='0000-00-00', $idoficina=0, $idgamer=0, $idproductividad=0)
 	{
 		$query="UPDATE mod_panel_registro SET ";
 		if($nombre!==''){ $query.="nombre='".$nombre."'	";	}				
@@ -220,6 +220,9 @@ class registro
 		if($orden!==0){ $query.=",orden='".$orden."' ";	}		
 		if($idestado!==0){ $query.=",idestado='".$idestado."' ";	}
 		if($iddestacado!==0){ $query.=",iddestacado='".$iddestacado."' ";	}
+		if($idoficina!==0){$query.=",idoficina='".$idoficina."'"; }
+		if($idgamer!==0){$query.=",idgamer='".$idgamer."'"; }
+		if($idproductividad!==0){$query.=",idproductividad='".$idproductividad."'"; }
 		if($fecha_modificacion!=='0000-00-00'){ $query.=",fecha_modificacion='".$fecha_modificacion."' ";	}						
 		$query.=" WHERE id= ? ";
 		#echo $query;

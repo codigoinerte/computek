@@ -3,7 +3,7 @@ include "../../../funciones/conecta.general.php";
 include URL_ROOT_ADMIN."funciones/definition.php";
 include URL_ROOT_ADMIN."funciones/funciones.php";
 include URL_ROOT_ADMIN."funciones/constantes.php";
-include URL_ROOT_ADMIN."modulos/$get_modulo/clases/class.registro.php";
+include URL_ROOT_ADMIN."modulos/mod_panel/clases/class.registro.php";
 $datos_registro = new registro();
 
 $_item_nombre = isset($_POST["nombre"])?$_POST["nombre"]:'';
@@ -15,6 +15,9 @@ $_item_alias = isset($_POST["alias"])?$_POST["alias"]:'';
 $_item_orden = isset($_POST["orden"])?$_POST["orden"]:'';
 $_item_estado = isset($_POST["estado"])?$_POST["estado"]:0;
 $_item_destacado = isset($_POST["destacado"])?$_POST["destacado"]:0;
+$_item_idoficina = isset($_POST["oficina"])?$_POST["oficina"]:0;
+$_item_idgamer = isset($_POST["gamer"])?$_POST["gamer"]:0;
+$_item_idproductividad = isset($_POST["productividad"])?$_POST["productividad"]:0;
 
 $_item_idmoneda = isset($_POST["idmoneda"])?$_POST["idmoneda"]:0;
 $_item_precio = isset($_POST["precio"])?$_POST["precio"]:0;
@@ -50,7 +53,7 @@ switch ($get_action) {
 		$cant_alias = isset($array_cant_alias[0]["cant"])?$array_cant_alias[0]["cant"]:0;
 		$_item_alias = $_item_alias.(($cant_alias>0)?"-".($cant_alias):'');
 		
-		$array_id = $datos_registro->insertar_registro($_item_nombre, $_item_url, "", "", $_item_descripcion, $_item_orden, 3, $_item_estado, 1, $_item_destacado, $fecha_creacion, $fecha_creacion);
+		$array_id = $datos_registro->insertar_registro($_item_nombre, $_item_url, "", "", $_item_descripcion, $_item_orden, 3, $_item_estado, 1, $_item_destacado, $fecha_creacion, $fecha_creacion, $_item_idoficina, $_item_idgamer, $_item_idproductividad);
 		$ID = isset($array_id[0]["id"])?$array_id[0]["id"]:'';
 		
 		if($_item_subcategoria > 0)			
@@ -86,7 +89,7 @@ switch ($get_action) {
     case 'edit':
 				
 						#actualizar_registro($id, $nombre, $url, $imagen, $resumen, $descripcion, $orden, $idestado, $iddestacado, $fecha_modificacion)
-    	$datos_registro->actualizar_registro($get_id, $_item_nombre, "","", "",$_item_descripcion,$_item_orden,$_item_estado,$_item_destacado,$fecha_creacion);
+    	$datos_registro->actualizar_registro($get_id, $_item_nombre, "","", "",$_item_descripcion,$_item_orden,$_item_estado,$_item_destacado,$fecha_creacion,$_item_idoficina,$_item_idgamer,$_item_idproductividad);
 		$datos_registro->actualizar_alias($get_id, $_item_alias, $_item_pagina);
 		
 		#PRECIO
