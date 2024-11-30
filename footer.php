@@ -116,28 +116,9 @@
               <?php echo mostrar_modulo_web(648 , 1); ?>
             </div>
             <div class="col-span-4">
-              <h1 class="relative mb-5 pb-2 text-lg font-semibold text-black after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-16 after:bg-primary-300 after:content-['']">
-                Información
-              </h1>
-              <ul>
-                <?php
-                if(count($listado_informacion) > 0)
-                {
-                  foreach($listado_informacion as $item)
-                  {
-                    $item_nombre = isset($item["nombre"])?$item["nombre"]:'';
-                    $item_alias = isset($item["alias"])?URL_WEB.$item["alias"]:'';
-                    ?>
-                      <li class="pb-2">
-                        <a class="transition-all duration-300 color-gray-6 hover:text-black" href="<?php echo $item_alias; ?>">
-                          <?php echo $item_nombre; ?>
-                      </a>
-                      </li>
-                    <?php
-                  }
-                }
-                ?>                
-              </ul>
+              <div class="mapa-footer">
+                <?php echo modulo_mapa(661) ?>
+              </div>
             </div>
             <div class="col-span-4">
               <h1 class="relative mb-5 pb-2 text-lg font-semibold text-black after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-16 after:bg-primary-300 after:content-['']">
@@ -534,6 +515,12 @@
         <polyline points="18 15 12 9 6 15"></polyline>
       </svg>
     </div>
+
+    
+    <a href="https://api.whatsapp.com/send?phone=<?php echo contacto_empresa(4, 2); ?>" class="whatsapp-button-fixed" target="_blank">
+      <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="whatsapp">
+    </a>
+
 
     <script src="<?php echo URL_WEB; ?>lib/simpleParallax/simpleParallax.min.js?v=<?php echo $version; ?>"></script>
     <script src="<?php echo URL_WEB; ?>lib/rater-js/rater-js.js?v=<?php echo $version; ?>"></script>
