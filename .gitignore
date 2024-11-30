@@ -5,3 +5,4 @@ admin/cache/*
 .vscode
 .vscode/*
 templates_c/
+/images/*
