@@ -96,7 +96,7 @@ else if($get_action=='edit' or $get_action=='new')
 ?>	
 	
 
-      <form class="form-horizontal" method="post" action="<?php echo $form_guardar; ?>" enctype="multipart/form-data">        
+      <form class="form-horizontal" method="post" action="<?php echo $url_form_guardar; ?>" enctype="multipart/form-data">        
 		       
 		<div>
 		  <!-- Nav tabs -->
