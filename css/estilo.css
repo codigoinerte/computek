@@ -167,6 +167,12 @@ address{
     position: relative;
     z-index: 2;
 }
+@media screen and (min-width: 1024px) and (max-width:1280px){
+    .menu-desktop li:has(a[href*="sobre-nosotros"]),
+    .menu-desktop li:has(a[href*="contactenos"]){
+        display: none !important;
+    }
+}
 @media(max-width:500px){
     .whatsapp{
         display: none;
