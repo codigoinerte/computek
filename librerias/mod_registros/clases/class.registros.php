@@ -382,6 +382,55 @@ class registros_home
 		$lista = $this->data->executeQuery($query, array( "$idpadre", "$idtipo" ));
 		return $lista;		
 	}
+
+	#PRODUCTOS BY CATEGORIA
+	public function contar_registros_productosByCategory($idpadre, $idtipo)
+	{
+
+		$lista="";
+		$query="SELECT count(*)
+				FROM mod_panel_registro mar
+				LEFT JOIN mod_panel_registro_relacion mrr ON mrr.id2 = mar.id
+				LEFT JOIN mod_panel_registro_relacion mrr2 ON mrr2.id2 = mrr.id1
+				LEFT JOIN mod_com_alias mca ON mca.id_registro = mar.id
+				LEFT JOIN mod_panel_registro_precio marp ON marp.idprincipal = mar.id				
+				WHERE mrr2.id1 = ? AND  mar.idtipo = ? AND mar.idestado=1
+				ORDER BY fecha_creacion ASC, mar.orden ASC ";		
+		
+		$lista = $this->data->executeQuery($query, array( "$idpadre", "$idtipo" ));
+		return $lista;		
+	}
+	public function listar_registros_productosByCategory($idpadre, $idtipo, $limitInf,$tamPag)
+	{
+
+		$lista="";
+		$query="SELECT mar.id, mar.nombre, mar.url, mar.imagen, mar.resumen, mar.descripcion, mar.orden, mar.idtipo, mar.idestado, mar.iddestacado, mar.fecha_creacion,
+				marp.precio, marp.descuento, marp.idmoneda, mca.alias, marp.stock,
+				(
+					SELECT mar1.imagen
+					FROM mod_panel_registro mar1
+					LEFT JOIN mod_panel_registro_relacion mrr1 ON mrr1.id2 = mar1.id
+					WHERE mrr1.id1 = mar.id AND mar1.idtipo = 4
+					LIMIT 0,1
+				) as imagen_principal,
+				(
+					SELECT mar1.imagen
+					FROM mod_panel_registro mar1
+					LEFT JOIN mod_panel_registro_relacion mrr1 ON mrr1.id2 = mar1.id
+					WHERE mrr1.id1 = mar.id AND mar1.idtipo = 4 AND mar.iddestacado=1
+					LIMIT 0,1
+				) as imagen_destacada				
+				FROM mod_panel_registro mar
+				LEFT JOIN mod_panel_registro_relacion mrr ON mrr.id2 = mar.id
+				LEFT JOIN mod_panel_registro_relacion mrr2 ON mrr2.id2 = mrr.id1
+				LEFT JOIN mod_com_alias mca ON mca.id_registro = mar.id
+				LEFT JOIN mod_panel_registro_precio marp ON marp.idprincipal = mar.id	
+				WHERE mrr2.id1 = ? AND  mar.idtipo = ? AND mar.idestado=1
+				ORDER BY fecha_creacion ASC, mar.orden ASC
+				LIMIT $limitInf,$tamPag ; ";		
+		$lista = $this->data->executeQuery($query, array( "$idpadre", "$idtipo" ));
+		return $lista;		
+	}
 	
 	///////////////////////////////////////////////////////////////////////////
 	
