@@ -41,7 +41,7 @@ switch ($get_action) {
 		
 		$array_id = $datos_registro->insertar_registro($_item_nombre, $_item_url, "", "", $_item_descripcion, $_item_orden, 1, $_item_estado, 1, 0, $fecha_creacion, $fecha_creacion);
 		$ID = isset($array_id[0]["id"])?$array_id[0]["id"]:'';
-		$datos_registro->insertar_alias($ID, $_item_pagina, $_item_alias, 1);
+		$datos_registro->insertar_alias($ID, $_item_pagina, $_item_alias, 2);
 		
 		#SEO		
 		#insertar_registro($nombre, $url, $imagen, $resumen, $descripcion, $orden, $idtipo, $idestado, $idusuario, $iddestacado, $fecha_creacion, $fecha_modificacion)
